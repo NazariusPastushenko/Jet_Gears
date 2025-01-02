@@ -44,3 +44,4 @@ C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\bin\Release\System.Text.Encodin
 C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\bin\Release\System.Text.Json.xml
 C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\bin\Release\System.Threading.Tasks.Extensions.xml
 C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\bin\Release\System.ValueTuple.xml
+C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\bin\Release\HtmlAgilityPack.pdb
