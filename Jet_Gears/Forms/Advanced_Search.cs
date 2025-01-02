@@ -22,6 +22,7 @@ namespace Jet_Gears
         private void Advanced_Search_Load(object sender, EventArgs e)
         {
             Show_Cards(0);
+            Child_Form_Panel.Hide();
         }
 
         private int last_card_i = 0;
@@ -34,10 +35,11 @@ namespace Jet_Gears
             InitialSearch.Initial_Search(Advanced_Search_TextBox.Text);
             Show_Cards(0);
         }
-        
-        private void Create_Search_Card(string gearcode, string price, string description, Image image)
+
+        private void Create_Search_Card(string gearcode, string price, string description, Image image, string link)
         {
             GearCard card = new GearCard();
+            card.Tag = link;
             card.Anchor = AnchorStyles.Left;
             card.BorderColor = Color.Black;
             card.RoundedCorners = false;
@@ -62,7 +64,17 @@ namespace Jet_Gears
             }
             card.LeftImageMouseEnter += Search_Card_LeftImageMouseEnter;
             card.LeftImageMouseLeave += Search_Card_LeftImageMouseLeave;
+            card.Click += Search_Card_Click;
         }
+        
+        private void Search_Card_Click(object sender, EventArgs e)
+        {
+            GearCard gearCard = sender as GearCard;
+
+            
+            
+        }
+        
         
         private void Search_Card_LeftImageMouseEnter(object sender, EventArgs e)
         {
@@ -113,7 +125,7 @@ namespace Jet_Gears
                     
                     img = await LoadImageFromUrlAsync(Categories.Search_Gears[i].ImgURL);
                 }
-                Create_Search_Card(item.title,item.price,item.description,img);
+                Create_Search_Card(item.title,item.price,item.description,img,item.title_link);
             }
         }
         private void Delete_Cards()
@@ -171,5 +183,22 @@ namespace Jet_Gears
             Delete_Cards();
             Show_Cards(last_card_i);
         }
+        
+        private Form activeForm = null;
+        public void openChildForm(Form childform)
+        {
+            childform.Show();
+            if (activeForm !=null) activeForm.Close();
+            activeForm = childform;
+            childform.TopLevel = false;
+            childform.FormBorderStyle = FormBorderStyle.None;
+            childform.Dock = DockStyle.Fill;
+            Child_Form_Panel.Controls.Add(childform);
+            Child_Form_Panel.Tag = childform;
+            childform.BringToFront();
+            childform.Show();
+        }
+        
+        
     }
 }

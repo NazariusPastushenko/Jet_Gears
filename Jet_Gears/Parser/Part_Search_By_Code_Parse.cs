@@ -1,4 +1,7 @@
-﻿using System;using System.Drawing.Drawing2D;
+﻿using System;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -12,11 +15,13 @@ using Jet_Gears.Objects;
 using Newtonsoft.Json;
 using HtmlDocument = HtmlAgilityPack.HtmlDocument;
 using GTranslate.Translators;
+namespace Jet_Gears.Parser;
 
-public class InitialSearch
+public class Part_Search_By_Code_Parse
 {
-    public static async void Initial_Search(string article)
+    public static Search_Gear Part_Seach_Search(string url)
     {
+        Search_Gear part = null;
         var i = 0;
         Console.OutputEncoding = Encoding.Unicode;
         Categories.Search_Gears.Clear();
@@ -24,7 +29,7 @@ public class InitialSearch
         var web = new HtmlWeb();
         try
         {
-            var document = web.Load("https://www.onlinecarparts.co.uk/spares-search.html?keyword=" + article);
+            var document = web.Load(url);
             var productCards = document.DocumentNode.SelectNodes("//div[@class='product-card__wrapper']");
 
 
@@ -52,11 +57,7 @@ public class InitialSearch
 
                 var imageNode =
                     productCard.SelectSingleNode(".//div[@class='product-card__image']//img[@class='lazyload']");
-                var image = imageNode?.Attributes["src"]?.Value.Trim();
-
-                var linkNode = productCard.SelectSingleNode(".//div[@class='product-card__title']/a");
-                var link = linkNode?.Attributes["href"]?.Value; // Отримуємо атрибут href
-
+                var imageURL = imageNode?.Attributes["src"]?.Value.Trim();
 
                 // Очистка від зайвих символів нового рядка
                 description = CleanText(description);
@@ -64,38 +65,46 @@ public class InitialSearch
                 price = price.Remove(0, 8);
 
                 // Виводимо зібрані дані
-
+                
                 Console.WriteLine($"Title: {title}");
                 Console.WriteLine($"Description: {description}");
                 Console.WriteLine($"Price: {price}");
-                Console.WriteLine($"ImageURL: {image}");
-                Console.WriteLine($"URL: {link}");
+                Console.WriteLine($"ImageURL: {imageURL}");
                 Console.WriteLine(new string('-', 30));
-
-
-                Categories.Search_Gears.Add(new Search_Gear(title, description, price, image,link));
+                part = new Search_Gear(title, description, price, imageURL, "");
+            
             }
         }
         catch (Exception e)
         {
-                MessageBox.Show("Деталей з таким артикулом не знайдено", "Помилка", MessageBoxButtons.OK,MessageBoxIcon.Information);
-                Console.WriteLine(e);
-
+            MessageBox.Show("", "Помилка", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+            Console.WriteLine(e);
+            return null;
         }
+        return part;
+    }
 
-        static string CleanText(string text)
+    static string CleanText(string text)
+    {
+        if (string.IsNullOrEmpty(text))
+            return string.Empty;
+
+        // Замінюємо кілька пробілів чи нових рядків на один пробіл
+        return Regex.Replace(text, @"\s+", " ").Trim();
+    }
+    
+    private static async Task<Image> LoadImageFromUrlAsync(string url)
+    {
+        using (HttpClient client = new HttpClient())
         {
-            if (string.IsNullOrEmpty(text))
-                return string.Empty;
+            HttpResponseMessage response = await client.GetAsync(url);
+            response.EnsureSuccessStatusCode();
 
-            // Замінюємо кілька пробілів чи нових рядків на один пробіл
-            return Regex.Replace(text, @"\s+", " ").Trim();
+            using (Stream stream = await response.Content.ReadAsStreamAsync())
+            {
+                return Image.FromStream(stream);
+            }
         }
-
     }
 }
-
-
-
-
-

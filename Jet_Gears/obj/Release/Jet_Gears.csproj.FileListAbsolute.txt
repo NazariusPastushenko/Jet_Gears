@@ -45,3 +45,4 @@ C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\bin\Release\System.Text.Json.xm
 C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\bin\Release\System.Threading.Tasks.Extensions.xml
 C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\bin\Release\System.ValueTuple.xml
 C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\bin\Release\HtmlAgilityPack.pdb
+C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Search_Part_Overview.resources

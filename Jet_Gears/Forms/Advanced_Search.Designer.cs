@@ -37,6 +37,7 @@ namespace Jet_Gears
             this.label1 = new System.Windows.Forms.Label();
             this.RightArrow_Button = new System.Windows.Forms.Button();
             this.LeftArrow_Button = new System.Windows.Forms.Button();
+            this.Child_Form_Panel = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,7 +81,7 @@ namespace Jet_Gears
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1200, 60);
+            this.panel2.Size = new System.Drawing.Size(1208, 60);
             this.panel2.TabIndex = 4;
             // 
             // label1
@@ -123,6 +124,13 @@ namespace Jet_Gears
             this.LeftArrow_Button.UseVisualStyleBackColor = false;
             this.LeftArrow_Button.Click += new System.EventHandler(this.LeftArrow_Button_Click);
             // 
+            // Child_Form_Panel
+            // 
+            this.Child_Form_Panel.Location = new System.Drawing.Point(708, 106);
+            this.Child_Form_Panel.Name = "Child_Form_Panel";
+            this.Child_Form_Panel.Size = new System.Drawing.Size(500, 492);
+            this.Child_Form_Panel.TabIndex = 7;
+            // 
             // Advanced_Search
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -130,6 +138,7 @@ namespace Jet_Gears
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(144)))), ((int)(((byte)(75)))));
             this.ClientSize = new System.Drawing.Size(1200, 600);
+            this.Controls.Add(this.Child_Form_Panel);
             this.Controls.Add(this.LeftArrow_Button);
             this.Controls.Add(this.RightArrow_Button);
             this.Controls.Add(this.panel2);
@@ -143,6 +152,8 @@ namespace Jet_Gears
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Panel Child_Form_Panel;
 
         private System.Windows.Forms.Button RightArrow_Button;
         private System.Windows.Forms.Button LeftArrow_Button;

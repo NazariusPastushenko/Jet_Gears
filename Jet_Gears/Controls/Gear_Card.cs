@@ -10,6 +10,7 @@ namespace Jet_Gears.Controls
     [DesignerCategory("Code")]
     public class GearCard : Control
     {
+        public string link { get; set; }
         public Gear Card_object { get; set; }
         [Category("Images")]
         [Description("Image displayed on the left side.")]
