@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "5e0S+N1vbMtepQ4QGEhkFmCE+yEzNsjaqCQEpSVQKMp8H5xDphUnO8UgSVrd/QH6Ic+PcTUDhvt3zVPqRNTG2A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\nazar\\RiderProjects\\Jet_Gears\\Parser\\Parser.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\nazar\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

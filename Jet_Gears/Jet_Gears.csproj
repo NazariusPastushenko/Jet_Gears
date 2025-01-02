@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProjectGuid>{3FE7CAEE-34D1-4A5C-8645-678AB419E6BA}</ProjectGuid>
+        <OutputType>WinExe</OutputType>
+        <RootNamespace>Jet_Gears</RootNamespace>
+        <AssemblyName>Jet_Gears</AssemblyName>
+        <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+        <FileAlignment>512</FileAlignment>
+        <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+        <Deterministic>true</Deterministic>
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>bin\Debug\</OutputPath>
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugType>pdbonly</DebugType>
+        <Optimize>true</Optimize>
+        <OutputPath>bin\Release\</OutputPath>
+        <DefineConstants>TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="GTranslate, Version=2.2.8.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\GTranslate.2.2.8\lib\netstandard2.0\GTranslate.dll</HintPath>
+        </Reference>
+        <Reference Include="HtmlAgilityPack, Version=1.4.9.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+          <HintPath>..\packages\HtmlAgilityPack.CssSelectors.1.0.2\lib\net45\HtmlAgilityPack.dll</HintPath>
+        </Reference>
+        <Reference Include="HtmlAgilityPack.CssSelectors, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\HtmlAgilityPack.CssSelectors.1.0.2\lib\net45\HtmlAgilityPack.CssSelectors.dll</HintPath>
+        </Reference>
+        <Reference Include="Jet_Gears">
+          <HintPath>bin\Debug\Jet_Gears.exe</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+          <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+        </Reference>
+        <Reference Include="mscorlib" />
+        <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+          <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+        </Reference>
+        <Reference Include="QuickStart">
+          <HintPath>..\..\..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\QuickStart\v4.0_2024.3.924.462__5bb2a467cbec794e\QuickStart.dll</HintPath>
+        </Reference>
+        <Reference Include="System"/>
+        <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+          <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Core"/>
+        <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+          <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Net.Http.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+          <HintPath>..\packages\System.Net.Http.Json.8.0.0\lib\net462\System.Net.Http.Json.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Numerics" />
+        <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Text.Encodings.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+          <HintPath>..\packages\System.Text.Encodings.Web.8.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Text.Json, Version=8.0.0.4, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+          <HintPath>..\packages\System.Text.Json.8.0.4\lib\net462\System.Text.Json.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+          <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+        </Reference>
+        <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+          <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Xml.Linq"/>
+        <Reference Include="System.Data.DataSetExtensions"/>
+        <Reference Include="Microsoft.CSharp"/>
+        <Reference Include="System.Data"/>
+        <Reference Include="System.Deployment"/>
+        <Reference Include="System.Drawing"/>
+        <Reference Include="System.Net.Http"/>
+        <Reference Include="System.Windows.Forms"/>
+        <Reference Include="System.Design" />
+        <Reference Include="System.Xml"/>
+        <Reference Include="Telerik.WinControls.UI">
+          <HintPath>..\..\..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\Telerik.WinControls.UI\v4.0_2024.3.924.462__5bb2a467cbec794e\Telerik.WinControls.UI.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="Anim\Animation.cs" />
+        <Compile Include="Anim\Animator.cs" />
+        <Compile Include="Categories.cs" />
+        <Compile Include="Controls\BusketCard.cs" />
+        <Compile Include="Controls\button.cs" />
+        <Compile Include="Controls\EgoldsGoogleTextBox.cs" />
+        <Compile Include="Controls\Gear_Card.cs" />
+        <Compile Include="DataBases\DataBase.cs" />
+        <Compile Include="Drawer.cs" />
+        <Compile Include="Forms\Advanced_Search.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Forms\Advanced_Search.Designer.cs">
+          <DependentUpon>Advanced_Search.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Forms\Basket_Form.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Forms\Basket_Form.Designer.cs">
+          <DependentUpon>Basket_Form.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Forms\Main_Form.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Forms\Main_Form.Designer.cs">
+          <DependentUpon>Main_Form.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Forms\Enter_Form.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Forms\Enter_Form.Designer.cs">
+          <DependentUpon>Enter_Form.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Forms\Registration_Form.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Forms\Registration_Form.Designer.cs">
+          <DependentUpon>Registration_Form.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Forms\Search_Shelf_Form.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Forms\Search_Shelf_Form.Designer.cs">
+          <DependentUpon>Search_Shelf_Form.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Forms\Search_Suggestion.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Forms\Search_Suggestion.Designer.cs">
+          <DependentUpon>Search_Suggestion.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Forms\Supply_Form.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Forms\Supply_Form.Designer.cs">
+          <DependentUpon>Supply_Form.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Objects\Gear.cs" />
+        <Compile Include="Objects\Search_Gear.cs" />
+        <Compile Include="Parser\InitialSeach.cs" />
+        <Compile Include="Program.cs" />
+        <Compile Include="Properties\AssemblyInfo.cs" />
+        <EmbeddedResource Include="Forms\Advanced_Search.resx">
+          <DependentUpon>Advanced_Search.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Forms\Basket_Form.resx">
+          <DependentUpon>Basket_Form.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Forms\Main_Form.resx">
+          <DependentUpon>Main_Form.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Forms\Enter_Form.resx">
+          <DependentUpon>Enter_Form.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Forms\Registration_Form.resx">
+          <DependentUpon>Registration_Form.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Forms\Search_Shelf_Form.resx">
+          <DependentUpon>Search_Shelf_Form.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Forms\Search_Suggestion.resx">
+          <DependentUpon>Search_Suggestion.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Forms\Supply_Form.resx">
+          <DependentUpon>Supply_Form.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Properties\Resources.resx">
+            <Generator>ResXFileCodeGenerator</Generator>
+            <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+            <SubType>Designer</SubType>
+        </EmbeddedResource>
+        <Compile Include="Properties\Resources.Designer.cs">
+            <AutoGen>True</AutoGen>
+            <DependentUpon>Resources.resx</DependentUpon>
+        </Compile>
+        <None Include="packages.config" />
+        <None Include="Properties\Settings.settings">
+            <Generator>SettingsSingleFileGenerator</Generator>
+            <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+        </None>
+        <Compile Include="Properties\Settings.Designer.cs">
+            <AutoGen>True</AutoGen>
+            <DependentUpon>Settings.settings</DependentUpon>
+            <DesignTimeSharedInput>True</DesignTimeSharedInput>
+        </Compile>
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="App.config" />
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include="Resources\Alata.ttf" />
+      <Content Include="Resources\Arrow_Left.png" />
+      <Content Include="Resources\Backet_Button.png" />
+      <Content Include="Resources\Car_Button.png" />
+      <Content Include="Resources\Closed_Eye.png" />
+      <Content Include="Resources\free_user_icon_3296_thumb.png" />
+      <Content Include="Resources\images.png" />
+      <Content Include="Resources\images_removebg_preview.png" />
+      <Content Include="Resources\Left_Arrow.png" />
+      <Content Include="Resources\Loading_Gears.gif" />
+      <Content Include="Resources\logo.png" />
+      <Content Include="Resources\logo1.png" />
+      <Content Include="Resources\Open_Eye.png" />
+      <Content Include="Resources\Part_Icon.png" />
+      <Content Include="Resources\Picture_Icon.png" />
+      <Content Include="Resources\Right_Arrow.png" />
+      <Content Include="Resources\Search_Button.png" />
+      <Content Include="Resources\Shelf_Button.png" />
+      <Content Include="Resources\star.png" />
+      <Content Include="Resources\_0a41b1c83a9f2.png" />
+      <Content Include="Resources\_1167055.png" />
+      <Content Include="Resources\_2736918.png" />
+      <Content Include="Resources\_3737369.png" />
+      <Content Include="Resources\_3879485.png" />
+      <Content Include="Resources\впавпа.png" />
+      <Content Include="Resources\Дизайн_без_названия__4_.png" />
+      <Content Include="Resources\Дизайн_без_названия__5_.png" />
+      <Content Include="Resources\Дизайн_без_названия__6_.png" />
+      <Content Include="Resources\Дизайн_без_названия__7_.png" />
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
+</Project>
