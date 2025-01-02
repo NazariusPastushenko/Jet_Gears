@@ -165,6 +165,7 @@
           <DependentUpon>Supply_Form.cs</DependentUpon>
         </Compile>
         <Compile Include="Objects\Gear.cs" />
+        <Compile Include="Objects\OverviewPart.cs" />
         <Compile Include="Objects\Search_Gear.cs" />
         <Compile Include="Parser\InitialSeach.cs" />
         <Compile Include="Parser\Part_Search_By_Code_Parse.cs" />

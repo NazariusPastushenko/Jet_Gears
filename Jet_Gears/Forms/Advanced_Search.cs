@@ -39,7 +39,7 @@ namespace Jet_Gears
         private void Create_Search_Card(string gearcode, string price, string description, Image image, string link)
         {
             GearCard card = new GearCard();
-            card.Tag = link;
+            card.link = link;
             card.Anchor = AnchorStyles.Left;
             card.BorderColor = Color.Black;
             card.RoundedCorners = false;
@@ -70,9 +70,10 @@ namespace Jet_Gears
         private void Search_Card_Click(object sender, EventArgs e)
         {
             GearCard gearCard = sender as GearCard;
+            Part_Search_By_Code_Parse.Part_URL_Search(gearCard.link);
 
-            
-            
+            Search_Part_Overview overview_form = new Search_Part_Overview();
+            openChildForm(overview_form);
         }
         
         
@@ -187,7 +188,6 @@ namespace Jet_Gears
         private Form activeForm = null;
         public void openChildForm(Form childform)
         {
-            childform.Show();
             if (activeForm !=null) activeForm.Close();
             activeForm = childform;
             childform.TopLevel = false;

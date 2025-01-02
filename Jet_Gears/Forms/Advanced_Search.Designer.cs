@@ -126,6 +126,7 @@ namespace Jet_Gears
             // 
             // Child_Form_Panel
             // 
+            this.Child_Form_Panel.BackColor = System.Drawing.Color.White;
             this.Child_Form_Panel.Location = new System.Drawing.Point(708, 106);
             this.Child_Form_Panel.Name = "Child_Form_Panel";
             this.Child_Form_Panel.Size = new System.Drawing.Size(500, 492);
