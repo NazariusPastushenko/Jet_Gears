@@ -6,12 +6,13 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web.UI.Design.WebControls;
 using System.Windows.Forms;
+using GoogleTranslateFreeApi;
 using HtmlAgilityPack;
 using Jet_Gears;
 using Jet_Gears.Objects;
 using Newtonsoft.Json;
 using HtmlDocument = HtmlAgilityPack.HtmlDocument;
-using GTranslate.Translators;
+
 
 public class InitialSearch
 {
@@ -61,10 +62,11 @@ public class InitialSearch
                 // Очистка від зайвих символів нового рядка
                 description = CleanText(description);
                 price = CleanText(price);
-                price = price.Remove(0, 8);
-
+                price = price.Remove(0, 8); 
+                double priceUA = Convert.ToDouble(price) * 53.04;
+                priceUA = (int)priceUA;
+                
                 // Виводимо зібрані дані
-
                 Console.WriteLine($"Title: {title}");
                 Console.WriteLine($"Description: {description}");
                 Console.WriteLine($"Price: {price}");
@@ -73,7 +75,7 @@ public class InitialSearch
                 Console.WriteLine(new string('-', 30));
 
 
-                Categories.Search_Gears.Add(new Search_Gear(title, description, price, image,link));
+                Categories.Search_Gears.Add(new Search_Gear(title, description, priceUA.ToString(), image,link));
             }
         }
         catch (Exception e)

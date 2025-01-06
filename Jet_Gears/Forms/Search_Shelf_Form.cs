@@ -17,58 +17,18 @@ namespace Jet_Gears
     public partial class Search_Shelf_Form : Form
     {
         private int latest_X_Shelf = 12;
-        private int latest_Y_Shelf = 170;
+        private int latest_Y_Shelf = 125;
+        private int last_card_i = 0;
         private DataBase Gears_Base = new DataBase();
         public Search_Shelf_Form()
         {
             InitializeComponent();
             KeyPreview = true;
+            Show_User_Parts();
         }
 
-        private void Search_Panel_Click(object sender, EventArgs e)
-        {
-            Delete_Cards();
-            var Gear_Code = SearchTextBox.Text;
-            SqlDataAdapter adapter = new SqlDataAdapter();
-            DataTable table = new DataTable();
-            string querystring = $"select * from Gears";
-            var token = Categories.Curr_User_Token;
-            if (Gear_Code != "all"){
-                querystring = $"select id,gear_code,count_of,maker,price,description,picture,user_Token from Gears where gear_code = '{Gear_Code}'";
-            }
-
-
-            SqlCommand command = new SqlCommand(querystring, Gears_Base.getConnection());
-            adapter.SelectCommand = command;
-            adapter.Fill(table);
-            if (table.Rows.Count == 0) {MessageBox.Show("Деталі не знайдено", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Information); return;};
-            
-            foreach (DataRow row in table.Rows)
-            {
-                    var id = row["id"].ToString();
-                    var gearcode = row["gear_code"].ToString();
-                    var count_of = row["count_of"].ToString();
-                    var maker = row["maker"].ToString();
-                    var price = row["price"].ToString();
-                    var description = row["description"].ToString();
-                    
-                    byte[] imageData = row["picture"] as byte[];
-                    if (imageData != null)
-                    {
-                        using (MemoryStream ms = new MemoryStream(imageData))
-                        {
-                            Image image = Image.FromStream(ms);
-                            Create_Card(int.Parse(id),gearcode, count_of, maker, price, description, image);
-                        }
-                    }
-                    else
-                    {
-                        Create_Card(int.Parse(id), gearcode, count_of, maker, price, description, null); 
-                    }
-
-            }
-        }
         
+
         private void Create_Card(int id,string gearcode, string count_of, string maker, string price, string description, Image image)
         {
             GearCard card = new GearCard();
@@ -120,11 +80,13 @@ namespace Jet_Gears
             p.BackgroundImage = gearCard.LeftImage;
             p.BackgroundImageLayout = ImageLayout.Stretch;
             p.Size = new Size(300, 300);
-            p.Location = new Point(gearCard.Location.X + 50, gearCard.Location.Y + 20);
+            p.Location = new Point(80, 150);
+            
             p.BorderStyle = BorderStyle.FixedSingle;
             Controls.Add(p);
             Controls.SetChildIndex(p, 0);
             p.Tag = "ZoomPicture";
+            SuspendLayout();
         }
         
         private void GearCard_LeftImageMouseLeave(object sender, EventArgs e)
@@ -136,15 +98,78 @@ namespace Jet_Gears
                     Controls.Remove(c);
                 }
             }
+
+            ResumeLayout();
         }
         
-        
-        
+        private void Show_User_Parts()
+        {
+            Delete_Cards();
+            Categories.Shelf_Gears.Clear();
+            var Gear_Code = SearchTextBox.Text;
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            DataTable table = new DataTable();
+            string querystring = $"select * from Gears";
+            var token = Categories.Curr_User_Token;
+            if (Gear_Code != "all"){
+                querystring = $"select id,gear_code,count_of,maker,price,description,picture,user_Token from Gears where user_Token = '{Categories.Curr_User_Token}'";
+            }
+
+
+            SqlCommand command = new SqlCommand(querystring, Gears_Base.getConnection());
+            adapter.SelectCommand = command;
+            adapter.Fill(table);
+            if (table.Rows.Count == 0) {MessageBox.Show("Деталі не знайдено", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Information); return;};
+            
+            foreach (DataRow row in table.Rows)
+            {
+                var id = row["id"].ToString();
+                var gearcode = row["gear_code"].ToString();
+                var count_of = row["count_of"].ToString();
+                var maker = row["maker"].ToString();
+                var price = row["price"].ToString();
+                var description = row["description"].ToString();
+                    
+                byte[] imageData = row["picture"] as byte[];
+                if (imageData != null)
+                {
+                    using (MemoryStream ms = new MemoryStream(imageData))
+                    {
+                        Image image = Image.FromStream(ms);
+                        Categories.Shelf_Gears.Add(new Shelf_Gear(int.Parse(id),gearcode, count_of, maker, price, description, image));
+                    }
+                }
+                else
+                {
+                    Categories.Shelf_Gears.Add(new Shelf_Gear(int.Parse(id),gearcode, count_of, maker, price, description, null));
+                }
+
+            }
+            Show_Cards(0);
+        }
+
+        private void Show_Cards(int start_i)
+        {
+            Shelf_Gear item = null;
+            Image img = null;
+            for (int i = start_i; i <= start_i+5; i++)
+            {
+                try
+                {
+                    item = Categories.Shelf_Gears[i];
+                }
+                catch (Exception e)
+                {
+                    return;
+                }
+                Create_Card(item.id,item.gearcode,item.count_of,item.maker,item.price,item.description,item.image);
+            }
+        }
         
         private void Delete_Cards()
         {
             latest_X_Shelf = 12;
-             latest_Y_Shelf = 170;
+             latest_Y_Shelf = 125;
             for (int i = Controls.Count - 1; i >= 0; i--)
             {
                 if (Controls[i] is GearCard)
@@ -163,9 +188,87 @@ namespace Jet_Gears
             }
             if (e.KeyCode == Keys.Enter)
             {
-                Search_Panel_Click(sender,e);
+                Shelf_Search_Button_Click(sender,e);
                 
             }
+        }
+
+        private void LeftArrow_Button_Click(object sender, EventArgs e)
+        {
+            if (last_card_i == 0)
+            {
+                return;
+            }
+            else
+            {
+                last_card_i -= 6;
+            }
+            Delete_Cards();
+            Show_Cards(last_card_i);
+        }
+
+        private void RightArrow_Button_Click(object sender, EventArgs e)
+        {
+            last_card_i += 6;
+            if (last_card_i > Categories.Shelf_Gears.Count)
+            {
+                last_card_i -= 6;
+                return;
+                
+            }
+            Delete_Cards();
+            Show_Cards(last_card_i);
+        }
+
+        private void Shelf_Search_Button_Click(object sender, EventArgs e)
+        {
+           Delete_Cards();
+            Categories.Shelf_Gears.Clear();
+            var Gear_Code = SearchTextBox.Text;
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            DataTable table = new DataTable();
+            string querystring = $"select * from Gears";
+            var token = Categories.Curr_User_Token;
+            if (Gear_Code != "all"){
+                querystring = $"select id,gear_code,count_of,maker,price,description,picture,user_Token from Gears where gear_code = '{Gear_Code}' and user_Token = '{token}'";
+            }
+
+
+            SqlCommand command = new SqlCommand(querystring, Gears_Base.getConnection());
+            adapter.SelectCommand = command;
+            adapter.Fill(table);
+            if (table.Rows.Count == 0)
+            {
+                MessageBox.Show("Деталі не знайдено", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Information); 
+                Show_User_Parts();
+                return;
+            };
+            
+            foreach (DataRow row in table.Rows)
+            {
+                    var id = row["id"].ToString();
+                    var gearcode = row["gear_code"].ToString();
+                    var count_of = row["count_of"].ToString();
+                    var maker = row["maker"].ToString();
+                    var price = row["price"].ToString();
+                    var description = row["description"].ToString();
+                    
+                    byte[] imageData = row["picture"] as byte[];
+                    if (imageData != null)
+                    {
+                        using (MemoryStream ms = new MemoryStream(imageData))
+                        {
+                            Image image = Image.FromStream(ms);
+                            Categories.Shelf_Gears.Add(new Shelf_Gear(int.Parse(id),gearcode, count_of, maker, price, description, image));
+                        }
+                    }
+                    else
+                    {
+                        Categories.Shelf_Gears.Add(new Shelf_Gear(int.Parse(id),gearcode, count_of, maker, price, description, null));
+                    }
+
+            }
+            Show_Cards(0);
         }
     }
 }

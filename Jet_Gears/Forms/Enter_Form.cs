@@ -3,6 +3,8 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using Jet_Gears.DataBases;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Jet_Gears
 {
@@ -44,11 +46,10 @@ namespace Jet_Gears
             if (table.Rows.Count == 1)
             {
                 MessageBox.Show("Ви успішно зайшли", "Успішно", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Categories.Curr_User_Token = loginUser.GetHashCode().ToString();
                 Main_Form frm1 = new Main_Form();
                 Hide();
                 frm1.ShowDialog();
-                SetUserToken(loginUser.GetHashCode());
-
             }
             else
             {
@@ -96,13 +97,6 @@ namespace Jet_Gears
                 textBox_password.Text = "admin";
                 Registration_Button_Click(sender,e);
             }
-        }
-        
-        
-        public void SetUserToken(int token)
-        {
-            Categories.Curr_User_Token= token;
-            Console.WriteLine("Current User Token Set: " + Categories.Curr_User_Token);
         }
     }
 }

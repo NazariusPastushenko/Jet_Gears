@@ -7,9 +7,9 @@ namespace Jet_Gears
 {
     public class Categories
     {
-        public static int Curr_User_Token;
+        public static string Curr_User_Token { get; set; }
         public static ArrayList Busket_Array = new ArrayList();
         public static List<Search_Gear> Search_Gears = new List<Search_Gear>();
-        public static OverviewPart Current_Overview_Part;
+        public static List<Shelf_Gear> Shelf_Gears = new List<Shelf_Gear>();
     }
 }

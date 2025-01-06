@@ -50,12 +50,10 @@ namespace Jet_Gears
             this.Supply_Button = new System.Windows.Forms.Button();
             this.Basket_Button = new System.Windows.Forms.Button();
             this.panelChildForm = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel8.SuspendLayout();
-            this.panelChildForm.SuspendLayout();
             this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -288,19 +286,11 @@ namespace Jet_Gears
             // panelChildForm
             // 
             this.panelChildForm.BackColor = System.Drawing.Color.Transparent;
-            this.panelChildForm.Controls.Add(this.panel9);
+            this.panelChildForm.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.panelChildForm.Location = new System.Drawing.Point(0, 70);
             this.panelChildForm.Name = "panelChildForm";
             this.panelChildForm.Size = new System.Drawing.Size(1200, 600);
             this.panelChildForm.TabIndex = 3;
-            // 
-            // panel9
-            // 
-            this.panel9.BackColor = System.Drawing.Color.Transparent;
-            this.panel9.Location = new System.Drawing.Point(8, 8);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1200, 600);
-            this.panel9.TabIndex = 4;
             // 
             // panel5
             // 
@@ -325,7 +315,6 @@ namespace Jet_Gears
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
-            this.panelChildForm.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
         }
@@ -333,8 +322,6 @@ namespace Jet_Gears
         private System.Windows.Forms.Button Shelf_Button;
 
         private System.Windows.Forms.Panel panel10;
-
-        private System.Windows.Forms.Panel panel9;
 
         private System.Windows.Forms.Panel panelChildForm;
 

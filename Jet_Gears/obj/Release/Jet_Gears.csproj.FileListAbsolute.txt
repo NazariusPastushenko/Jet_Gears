@@ -46,3 +46,9 @@ C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\bin\Release\System.Threading.Ta
 C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\bin\Release\System.ValueTuple.xml
 C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\bin\Release\HtmlAgilityPack.pdb
 C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Search_Part_Overview.resources
+C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\bin\Release\GoogleTranslateFreeApi.dll
+C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\bin\Release\System.Diagnostics.DiagnosticSource.dll
+C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\bin\Release\GoogleTranslateFreeApi.xml
+C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\bin\Release\System.Diagnostics.DiagnosticSource.xml
+C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\bin\Release\BCrypt.Net-Next.dll
+C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\bin\Release\BCrypt.Net-Next.xml

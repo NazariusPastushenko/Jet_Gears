@@ -32,10 +32,12 @@ namespace Jet_Gears
         private void InitializeComponent()
         {
             this.SearchTextBox = new yt_DesignUI.EgoldsGoogleTextBox();
-            this.Search_Panel = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.LeftArrow_Button = new System.Windows.Forms.Button();
+            this.RightArrow_Button = new System.Windows.Forms.Button();
+            this.Shelf_Search_Button = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,24 +50,14 @@ namespace Jet_Gears
             this.SearchTextBox.Font = new System.Drawing.Font("Bahnschrift SemiBold SemiConden", 14.25F, System.Drawing.FontStyle.Bold);
             this.SearchTextBox.FontTextPreview = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.SearchTextBox.ForeColor = System.Drawing.Color.Black;
-            this.SearchTextBox.Location = new System.Drawing.Point(57, 66);
+            this.SearchTextBox.Location = new System.Drawing.Point(0, 54);
             this.SearchTextBox.Name = "SearchTextBox";
             this.SearchTextBox.SelectionStart = 0;
-            this.SearchTextBox.Size = new System.Drawing.Size(1000, 64);
+            this.SearchTextBox.Size = new System.Drawing.Size(1200, 55);
             this.SearchTextBox.TabIndex = 0;
             this.SearchTextBox.TextInput = "";
-            this.SearchTextBox.TextPreview = "Пошук  |  Введіть артикул";
+            this.SearchTextBox.TextPreview = "";
             this.SearchTextBox.UseSystemPasswordChar = false;
-            // 
-            // Search_Panel
-            // 
-            this.Search_Panel.BackgroundImage = global::Jet_Gears.Properties.Resources._0a41b1c83a9f2;
-            this.Search_Panel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Search_Panel.Location = new System.Drawing.Point(1093, 66);
-            this.Search_Panel.Name = "Search_Panel";
-            this.Search_Panel.Size = new System.Drawing.Size(70, 70);
-            this.Search_Panel.TabIndex = 1;
-            this.Search_Panel.Click += new System.EventHandler(this.Search_Panel_Click);
             // 
             // panel1
             // 
@@ -96,6 +88,52 @@ namespace Jet_Gears
             this.label1.TabIndex = 0;
             this.label1.Text = "Наявність";
             // 
+            // LeftArrow_Button
+            // 
+            this.LeftArrow_Button.BackColor = System.Drawing.Color.Transparent;
+            this.LeftArrow_Button.BackgroundImage = global::Jet_Gears.Properties.Resources.Left_Arrow;
+            this.LeftArrow_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.LeftArrow_Button.FlatAppearance.BorderSize = 0;
+            this.LeftArrow_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LeftArrow_Button.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.LeftArrow_Button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.LeftArrow_Button.Location = new System.Drawing.Point(511, 538);
+            this.LeftArrow_Button.Name = "LeftArrow_Button";
+            this.LeftArrow_Button.Size = new System.Drawing.Size(71, 60);
+            this.LeftArrow_Button.TabIndex = 8;
+            this.LeftArrow_Button.UseVisualStyleBackColor = false;
+            this.LeftArrow_Button.Click += new System.EventHandler(this.LeftArrow_Button_Click);
+            // 
+            // RightArrow_Button
+            // 
+            this.RightArrow_Button.BackColor = System.Drawing.Color.Transparent;
+            this.RightArrow_Button.BackgroundImage = global::Jet_Gears.Properties.Resources.Right_Arrow;
+            this.RightArrow_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.RightArrow_Button.FlatAppearance.BorderSize = 0;
+            this.RightArrow_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RightArrow_Button.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.RightArrow_Button.Location = new System.Drawing.Point(588, 538);
+            this.RightArrow_Button.Name = "RightArrow_Button";
+            this.RightArrow_Button.Size = new System.Drawing.Size(71, 59);
+            this.RightArrow_Button.TabIndex = 7;
+            this.RightArrow_Button.UseVisualStyleBackColor = false;
+            this.RightArrow_Button.Click += new System.EventHandler(this.RightArrow_Button_Click);
+            // 
+            // Shelf_Search_Button
+            // 
+            this.Shelf_Search_Button.BackColor = System.Drawing.Color.White;
+            this.Shelf_Search_Button.BackgroundImage = global::Jet_Gears.Properties.Resources._0a41b1c83a9f2;
+            this.Shelf_Search_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Shelf_Search_Button.FlatAppearance.BorderSize = 0;
+            this.Shelf_Search_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Shelf_Search_Button.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.Shelf_Search_Button.Location = new System.Drawing.Point(1151, 59);
+            this.Shelf_Search_Button.Name = "Shelf_Search_Button";
+            this.Shelf_Search_Button.Size = new System.Drawing.Size(48, 48);
+            this.Shelf_Search_Button.TabIndex = 9;
+            this.Shelf_Search_Button.UseVisualStyleBackColor = false;
+            this.Shelf_Search_Button.Click += new System.EventHandler(this.Shelf_Search_Button_Click);
+            // 
             // Search_Shelf_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -103,9 +141,11 @@ namespace Jet_Gears
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(1200, 600);
+            this.Controls.Add(this.Shelf_Search_Button);
+            this.Controls.Add(this.LeftArrow_Button);
+            this.Controls.Add(this.RightArrow_Button);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.Search_Panel);
             this.Controls.Add(this.SearchTextBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Search_Shelf_Form";
@@ -115,13 +155,16 @@ namespace Jet_Gears
             this.ResumeLayout(false);
         }
 
+        private System.Windows.Forms.Button Shelf_Search_Button;
+
+        private System.Windows.Forms.Button LeftArrow_Button;
+        private System.Windows.Forms.Button RightArrow_Button;
+
         private System.Windows.Forms.Label label1;
 
         private System.Windows.Forms.Panel panel2;
 
         private System.Windows.Forms.Panel panel1;
-
-        private System.Windows.Forms.Panel Search_Panel;
 
         private yt_DesignUI.EgoldsGoogleTextBox SearchTextBox;
 

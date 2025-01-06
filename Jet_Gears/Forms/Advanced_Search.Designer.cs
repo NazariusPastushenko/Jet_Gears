@@ -33,8 +33,8 @@ namespace Jet_Gears
         {
             this.Advanced_Search_TextBox = new yt_DesignUI.EgoldsGoogleTextBox();
             this.Advance_Search_BuAdvance_Search_Button_ClickAdvance_Search_Button_Clicktton = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.RightArrow_Button = new System.Windows.Forms.Button();
             this.LeftArrow_Button = new System.Windows.Forms.Button();
             this.Child_Form_Panel = new System.Windows.Forms.Panel();
@@ -74,6 +74,16 @@ namespace Jet_Gears
             this.Advance_Search_BuAdvance_Search_Button_ClickAdvance_Search_Button_Clicktton.UseVisualStyleBackColor = false;
             this.Advance_Search_BuAdvance_Search_Button_ClickAdvance_Search_Button_Clicktton.Click += new System.EventHandler(this.Advance_Search_Button_Click);
             // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Bahnschrift SemiBold SemiConden", 30F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(451, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(260, 51);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Пошук деталей";
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(59)))), ((int)(((byte)(9)))));
@@ -81,18 +91,8 @@ namespace Jet_Gears
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1208, 60);
+            this.panel2.Size = new System.Drawing.Size(1200, 60);
             this.panel2.TabIndex = 4;
-            // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Bahnschrift SemiBold SemiConden", 30F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(501, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(260, 51);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Пошук деталей";
             // 
             // RightArrow_Button
             // 
@@ -126,8 +126,8 @@ namespace Jet_Gears
             // 
             // Child_Form_Panel
             // 
-            this.Child_Form_Panel.BackColor = System.Drawing.Color.White;
-            this.Child_Form_Panel.Location = new System.Drawing.Point(708, 106);
+            this.Child_Form_Panel.BackColor = System.Drawing.Color.Transparent;
+            this.Child_Form_Panel.Location = new System.Drawing.Point(700, 105);
             this.Child_Form_Panel.Name = "Child_Form_Panel";
             this.Child_Form_Panel.Size = new System.Drawing.Size(500, 492);
             this.Child_Form_Panel.TabIndex = 7;
@@ -147,24 +147,20 @@ namespace Jet_Gears
             this.Controls.Add(this.Advanced_Search_TextBox);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Location = new System.Drawing.Point(15, 15);
             this.Name = "Advanced_Search";
-            this.Text = "Advanced_form";
             this.Load += new System.EventHandler(this.Advanced_Search_Load);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
         }
 
-        private System.Windows.Forms.Panel Child_Form_Panel;
-
+        private yt_DesignUI.EgoldsGoogleTextBox Advanced_Search_TextBox;
+        private System.Windows.Forms.Button Advance_Search_BuAdvance_Search_Button_ClickAdvance_Search_Button_Clicktton;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button RightArrow_Button;
         private System.Windows.Forms.Button LeftArrow_Button;
-
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label1;
-
-        private System.Windows.Forms.Button Advance_Search_BuAdvance_Search_Button_ClickAdvance_Search_Button_Clicktton;
-
-        private yt_DesignUI.EgoldsGoogleTextBox Advanced_Search_TextBox;
+        private System.Windows.Forms.Panel Child_Form_Panel;
 
         #endregion
     }

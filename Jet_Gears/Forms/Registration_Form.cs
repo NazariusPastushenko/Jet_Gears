@@ -71,7 +71,7 @@ namespace Jet_Gears
             if (command.ExecuteNonQuery() == 1)
             {
                 MessageBox.Show("Аккаунт успішно створений", "Успішно", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Categories.Curr_User_Token = loginUser.GetHashCode();
+                Categories.Curr_User_Token = BCrypt.Net.BCrypt.HashPassword(loginUser);
             }
             Hide();
             Main_Form main = new Main_Form();

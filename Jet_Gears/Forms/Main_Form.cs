@@ -19,7 +19,7 @@ namespace Jet_Gears
             InitializeComponent();
             var Card = new GearCard();
             Controls.Add(Card);
-
+            Console.WriteLine(Categories.Curr_User_Token);
         }
 
         private void Form1_Load(object sender, EventArgs e)

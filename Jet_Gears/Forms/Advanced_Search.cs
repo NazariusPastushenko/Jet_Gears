@@ -8,11 +8,13 @@ using Jet_Gears.Properties;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.IO;
+using System.Text;
 
 namespace Jet_Gears
 {
     public partial class Advanced_Search : Form
     {
+        
         public Advanced_Search()
         {
             InitializeComponent();
@@ -50,7 +52,7 @@ namespace Jet_Gears
             card.RightTextSize = 15;
             card.DescriptionLabel = description;
             card.RightBottomImage = Resources._3737369;
-            card.PriceLabel = "Ціна: " + price + " фунтів";
+            card.PriceLabel = "Ціна: " + price + "\u20b4";
             card.RightLabel2Text = "";
             latest_y_Search = latest_y_Search + 10 + card.Height;
             Controls.Add(card);
@@ -70,10 +72,10 @@ namespace Jet_Gears
         private void Search_Card_Click(object sender, EventArgs e)
         {
             GearCard gearCard = sender as GearCard;
-            Part_Search_By_Code_Parse.Part_URL_Search(gearCard.link);
-
-            Search_Part_Overview overview_form = new Search_Part_Overview();
+            Search_Part_Overview overview_form = new Search_Part_Overview(Part_Search_By_Code_Parse.Part_URL_Search(gearCard.link));
+            
             openChildForm(overview_form);
+
         }
         
         
@@ -188,17 +190,26 @@ namespace Jet_Gears
         private Form activeForm = null;
         public void openChildForm(Form childform)
         {
-            if (activeForm !=null) activeForm.Close();
+            if (activeForm != null)
+            {
+                activeForm.Close();
+            }
             activeForm = childform;
+            
             childform.TopLevel = false;
             childform.FormBorderStyle = FormBorderStyle.None;
             childform.Dock = DockStyle.Fill;
+            Child_Form_Panel.Controls.Clear();
+
+
             Child_Form_Panel.Controls.Add(childform);
             Child_Form_Panel.Tag = childform;
+            
             childform.BringToFront();
+            Child_Form_Panel.Show();
             childform.Show();
+
+            
         }
-        
-        
-    }
+        }
 }

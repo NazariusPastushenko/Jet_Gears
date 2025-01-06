@@ -22,9 +22,9 @@ namespace Jet_Gears.Parser;
 
 public class Part_Search_By_Code_Parse
 {
-    public async static Task Part_URL_Search(string url)
+    public static OverviewPart Part_URL_Search(string url)
     {
-        Console.OutputEncoding = Encoding.Unicode;
+        OverviewPart Return_part = new OverviewPart("", "", "", "", "", "","",new List<KeyValuePair<string, string>>());
         var web = new HtmlWeb();
         try
         {
@@ -35,10 +35,21 @@ public class Part_Search_By_Code_Parse
             var DescriptionNode = TitleNode?.SelectSingleNode(".//span[@class='product__subtitle']");
             var Description = DescriptionNode?.InnerText.Trim();
 
+            // Виробник деталі
+            var manufacturerNode = doc.DocumentNode.SelectSingleNode("//div[@class='product__artkl']");
+            var manufacturerText = manufacturerNode?.InnerText.Trim();
+            var manufacturer = manufacturerText?.Split(new[] { "Manufacturer:" }, StringSplitOptions.None).LastOrDefault()?.Trim();
+
+            
             // Зображення
             var picturesNodes = doc.DocumentNode.SelectNodes("//div[@class='product__pictures']//img");
             var pictures = picturesNodes?.Select(node => node.GetAttributeValue("src", string.Empty)).ToList();
 
+            // Артикул
+            var artklNode = doc.DocumentNode.SelectSingleNode("//div[@class='product__artkl']");
+            var articleMatch = Regex.Match(artklNode?.InnerText ?? "", @"Article №:\s*([\w-]+)");
+            var article = articleMatch.Success ? articleMatch.Groups[1].Value.Trim() : string.Empty;
+            
             // Ціна
             var priceNode =
                 doc.DocumentNode.SelectSingleNode("//div[@class='product__price']//div[@class='product__new-price']");
@@ -61,67 +72,47 @@ public class Part_Search_By_Code_Parse
                 }
             }
 
+            
+            
             Console.WriteLine("Title:");
             Console.WriteLine(Title);
             Console.WriteLine("Description:");
             Console.WriteLine(Description);
+            Console.WriteLine("Manufacturer:");
+            Console.WriteLine(manufacturer);
+            Console.WriteLine("Article:");
+            Console.WriteLine(article);
+            
+            
             Console.WriteLine("\nPictures:");
             if (pictures != null)
                 pictures.ForEach(Console.WriteLine);
 
             Console.WriteLine("\nPrice:");
+            price = price.Remove(0, 8);
             Console.WriteLine(price);
-
+            double priceUA = Convert.ToDouble(price) * 53.04;
+            priceUA = (int)priceUA;
             Console.WriteLine("\nTable:");
             foreach (var entry in tableData)
             {
                 Console.WriteLine($"{entry.Key}: {entry.Value}");
             }
 
-            Image brand_img = null;
-            Image part_img = null;
-            /*try
-            {
-                brand_img = await LoadImageFromUrlAsync(pictures[0]);
-            }
-            catch
-            {
-                MessageBox.Show("Картинка бренду недоступна", "Помилка", MessageBoxButtons.OK,MessageBoxIcon.Information);
-            }
+            string brand_img = pictures[0];
+            string part_img = pictures[1];
 
-            try
-            {
-                part_img = await LoadImageFromUrlAsync(pictures[1]);
-            }
-            catch
-            {
-                MessageBox.Show("Картинка деталі недоступна", "Помилка", MessageBoxButtons.OK,MessageBoxIcon.Information);
-            }
-            */
 
-            Categories.Current_Overview_Part = new OverviewPart(Title, Description, brand_img, part_img, price,tableData);
+
+            Return_part = new OverviewPart(Title, Description, manufacturer,article,brand_img, part_img, priceUA.ToString(), tableData);
         }
         catch (Exception e)
         {
-            {
-                Console.WriteLine("Помилка зчитування деталі!!!!!");
-            }
+
+            Console.WriteLine("Помилка зчитування деталі!!!!!");
+
         }
-    }
 
-
-
-    private static async Task<Image> LoadImageFromUrlAsync(string url)
-    {
-        using (HttpClient client = new HttpClient())
-        {
-            HttpResponseMessage response = await client.GetAsync(url);
-            response.EnsureSuccessStatusCode();
-
-            using (Stream stream = await response.Content.ReadAsStreamAsync())
-            {
-                return Image.FromStream(stream);
-            }
-        }
+        return Return_part;
     }
 }
