@@ -1,25 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
-using System.Net.Http;
 using System.Windows.Forms;
 using Jet_Gears.Controls;
 using Jet_Gears.DataBases;
 using Jet_Gears.Objects;
-using Jet_Gears.Parser;
 using Jet_Gears.Properties;
 
-namespace Jet_Gears
+namespace Jet_Gears.Forms
 {
     public partial class Search_Shelf_Form : Form
     {
-        private int latest_X_Shelf = 12;
-        private int latest_Y_Shelf = 125;
-        private int last_card_i = 0;
-        private DataBase Gears_Base = new DataBase();
+        private int _latestXShelf = 12;
+        private int _latestYShelf = 125;
+        private int _lastCardI = 0;
+        private readonly DataBase Gears_Base = new DataBase();
         public Search_Shelf_Form()
         {
             InitializeComponent();
@@ -34,14 +31,16 @@ namespace Jet_Gears
             GearCard card = new GearCard();
             card.BorderColor = Color.Black;
             card.RoundedCorners = false;
-            card.Location = new Point(latest_X_Shelf, latest_Y_Shelf);
+            card.Location = new Point(_latestXShelf, _latestYShelf);
             card.Size = new Size(1170, 60);
             card.NameLabel = gearcode + "    " + maker;
             card.DescriptionLabel = description;
             card.RightBottomImage = Resources._3737369;
+            card.MainTextSize = 15;
+            card.RightTextSize = 15;
             card.PriceLabel = "Ціна: " + price;
             card.RightLabel2Text = "Кількість: " + count_of;
-            latest_Y_Shelf = latest_Y_Shelf + 10 + card.Height;
+            _latestYShelf = _latestYShelf + 10 + card.Height;
             Controls.Add(card);
             if (image == null)
             {
@@ -168,8 +167,8 @@ namespace Jet_Gears
         
         private void Delete_Cards()
         {
-            latest_X_Shelf = 12;
-             latest_Y_Shelf = 125;
+            _latestXShelf = 12;
+             _latestYShelf = 125;
             for (int i = Controls.Count - 1; i >= 0; i--)
             {
                 if (Controls[i] is GearCard)
@@ -195,29 +194,29 @@ namespace Jet_Gears
 
         private void LeftArrow_Button_Click(object sender, EventArgs e)
         {
-            if (last_card_i == 0)
+            if (_lastCardI == 0)
             {
                 return;
             }
             else
             {
-                last_card_i -= 6;
+                _lastCardI -= 6;
             }
             Delete_Cards();
-            Show_Cards(last_card_i);
+            Show_Cards(_lastCardI);
         }
 
         private void RightArrow_Button_Click(object sender, EventArgs e)
         {
-            last_card_i += 6;
-            if (last_card_i > Categories.Shelf_Gears.Count)
+            _lastCardI += 6;
+            if (_lastCardI > Categories.Shelf_Gears.Count)
             {
-                last_card_i -= 6;
+                _lastCardI -= 6;
                 return;
                 
             }
             Delete_Cards();
-            Show_Cards(last_card_i);
+            Show_Cards(_lastCardI);
         }
 
         private void Shelf_Search_Button_Click(object sender, EventArgs e)

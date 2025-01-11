@@ -1,9 +1,4 @@
-﻿using System.Drawing;
-using System.Drawing.Text;
-using System.Windows.Forms;
-using Jet_Gears.Controls;
-
-namespace Jet_Gears
+﻿namespace Jet_Gears.Forms
 {
     partial class Main_Form
     {
@@ -44,6 +39,7 @@ namespace Jet_Gears
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.Shelf_Button = new System.Windows.Forms.Button();
             this.panel10 = new System.Windows.Forms.Panel();
             this.Search_Button = new System.Windows.Forms.Button();
@@ -184,6 +180,7 @@ namespace Jet_Gears
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
+            this.panel8.Controls.Add(this.button3);
             this.panel8.Controls.Add(this.Shelf_Button);
             this.panel8.Controls.Add(this.panel10);
             this.panel8.Controls.Add(this.Search_Button);
@@ -195,6 +192,25 @@ namespace Jet_Gears
             this.panel8.Size = new System.Drawing.Size(1197, 70);
             this.panel8.TabIndex = 1;
             // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.Transparent;
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.Location = new System.Drawing.Point(847, 3);
+            this.button3.Name = "button3";
+            this.button3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button3.Size = new System.Drawing.Size(163, 59);
+            this.button3.TabIndex = 7;
+            this.button3.Text = "Полиці";
+            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Shelf_Button
             // 
             this.Shelf_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -205,7 +221,7 @@ namespace Jet_Gears
             this.Shelf_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Shelf_Button.ForeColor = System.Drawing.Color.White;
             this.Shelf_Button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Shelf_Button.Location = new System.Drawing.Point(621, 12);
+            this.Shelf_Button.Location = new System.Drawing.Point(509, 11);
             this.Shelf_Button.Name = "Shelf_Button";
             this.Shelf_Button.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Shelf_Button.Size = new System.Drawing.Size(163, 42);
@@ -235,7 +251,7 @@ namespace Jet_Gears
             this.Search_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Search_Button.ForeColor = System.Drawing.Color.White;
             this.Search_Button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Search_Button.Location = new System.Drawing.Point(430, 12);
+            this.Search_Button.Location = new System.Drawing.Point(318, 11);
             this.Search_Button.Name = "Search_Button";
             this.Search_Button.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Search_Button.Size = new System.Drawing.Size(163, 42);
@@ -254,7 +270,7 @@ namespace Jet_Gears
             this.Supply_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Supply_Button.ForeColor = System.Drawing.Color.White;
             this.Supply_Button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Supply_Button.Location = new System.Drawing.Point(827, 4);
+            this.Supply_Button.Location = new System.Drawing.Point(678, 3);
             this.Supply_Button.Name = "Supply_Button";
             this.Supply_Button.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Supply_Button.Size = new System.Drawing.Size(163, 59);
@@ -273,7 +289,7 @@ namespace Jet_Gears
             this.Basket_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Basket_Button.ForeColor = System.Drawing.Color.White;
             this.Basket_Button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Basket_Button.Location = new System.Drawing.Point(996, 12);
+            this.Basket_Button.Location = new System.Drawing.Point(1016, 11);
             this.Basket_Button.Name = "Basket_Button";
             this.Basket_Button.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Basket_Button.Size = new System.Drawing.Size(163, 42);
@@ -318,6 +334,8 @@ namespace Jet_Gears
             this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Button button3;
 
         private System.Windows.Forms.Button Shelf_Button;
 

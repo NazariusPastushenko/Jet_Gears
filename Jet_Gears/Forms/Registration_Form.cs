@@ -74,7 +74,7 @@ namespace Jet_Gears
                 Categories.Curr_User_Token = BCrypt.Net.BCrypt.HashPassword(loginUser);
             }
             Hide();
-            Main_Form main = new Main_Form();
+            Forms.Main_Form main = new Forms.Main_Form();
             main.Show();
         }
 

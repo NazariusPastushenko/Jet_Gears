@@ -139,7 +139,7 @@ partial class Search_Part_Overview
         // 
         this.button2.BackgroundImage = global::Jet_Gears.Properties.Resources.Right_Arrow;
         this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-        this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+        this.button2.FlatAppearance.BorderColor = System.Drawing.Color.White;
         this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
         this.button2.Location = new System.Drawing.Point(430, 12);
         this.button2.Name = "button2";

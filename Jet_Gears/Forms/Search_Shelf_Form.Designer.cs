@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Jet_Gears
+namespace Jet_Gears.Forms
 {
     partial class Search_Shelf_Form
     {

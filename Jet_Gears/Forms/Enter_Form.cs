@@ -37,7 +37,7 @@ namespace Jet_Gears
             DataTable table = new DataTable();
 
             string querystring =
-                $"select id_user, login_user, password_user,Surname,Name,Token from register where login_user = '{loginUser}' and password_user = '{passUser}'";
+                $"select id_user, login_user, password_user,Surname,Name,Shelves from register where login_user = '{loginUser}' and password_user = '{passUser}'";
 
             SqlCommand command = new SqlCommand(querystring, users.getConnection());
             adapter.SelectCommand = command;
@@ -47,7 +47,8 @@ namespace Jet_Gears
             {
                 MessageBox.Show("Ви успішно зайшли", "Успішно", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Categories.Curr_User_Token = loginUser.GetHashCode().ToString();
-                Main_Form frm1 = new Main_Form();
+                Categories.Curr_User_Login = loginUser;
+                Forms.Main_Form frm1 = new Forms.Main_Form();
                 Hide();
                 frm1.ShowDialog();
             }

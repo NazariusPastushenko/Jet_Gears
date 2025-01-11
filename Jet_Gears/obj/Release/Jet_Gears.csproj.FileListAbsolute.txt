@@ -6,10 +6,8 @@ C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\bin\Release\Newtonsoft.Json.dll
 C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\bin\Release\Newtonsoft.Json.xml
 C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Advanced_Search.resources
 C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Basket_Form.resources
-C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Main_Form.resources
 C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Enter_Form.resources
 C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Registration_Form.resources
-C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Search_Shelf_Form.resources
 C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Search_Suggestion.resources
 C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Supply_Form.resources
 C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Properties.Resources.resources
@@ -52,3 +50,8 @@ C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\bin\Release\GoogleTranslateFree
 C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\bin\Release\System.Diagnostics.DiagnosticSource.xml
 C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\bin\Release\BCrypt.Net-Next.dll
 C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\bin\Release\BCrypt.Net-Next.xml
+C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Forms.Search_Shelf_Form.resources
+C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Forms.Main_Form.resources
+C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Forms.Shelf_Form.resources
+C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\ShelfControl.resources
+C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Forms.Ask_ShelfNum_Form.resources

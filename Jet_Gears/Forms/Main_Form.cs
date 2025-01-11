@@ -1,24 +1,16 @@
 ﻿using System;
-using System.Drawing;
-using System.Drawing.Text;
-using System.IO;
 using System.Windows.Forms;
-using Jet_Gears;
 using Jet_Gears.Controls;
-using Jet_Gears.DataBases;
-using Jet_Gears.Parser;
-using Jet_Gears.Properties;
 
-
-namespace Jet_Gears
+namespace Jet_Gears.Forms
 {
     public partial class Main_Form : Form
     {
         public Main_Form()
         {
             InitializeComponent();
-            var Card = new GearCard();
-            Controls.Add(Card);
+            var card = new GearCard();
+            Controls.Add(card);
             Console.WriteLine(Categories.Curr_User_Token);
         }
 
@@ -27,12 +19,12 @@ namespace Jet_Gears
         }
 
 
-        private Form activeForm = null;
+        private Form _activeForm;
 
-        public void openChildForm(Form childform)
+        private void OpenChildForm(Form childform)
         {
-            if (activeForm !=null) activeForm.Close();
-            activeForm = childform;
+            if (_activeForm !=null) _activeForm.Close();
+            _activeForm = childform;
             childform.TopLevel = false;
             childform.FormBorderStyle = FormBorderStyle.None;
             childform.Dock = DockStyle.Fill;
@@ -45,21 +37,21 @@ namespace Jet_Gears
 
         private void Search_Button_Click(object sender, EventArgs e)
         {
-            openChildForm(new Advanced_Search());
+            OpenChildForm(new Advanced_Search());
         }
 
         private void Supply_Button_Click(object sender, EventArgs e)
         {
-            openChildForm(new Supply_Form());
+            OpenChildForm(new Supply_Form());
         }
 
         private void Shelf_Button_Click(object sender, EventArgs e)
         {
-            openChildForm(new Search_Shelf_Form());
+            OpenChildForm(new Search_Shelf_Form());
         }
         private void Basket_Button_Click(object sender, EventArgs e)
         {
-            openChildForm(new Basket_Form());
+            OpenChildForm(new Basket_Form());
         }
 
 
@@ -73,6 +65,10 @@ namespace Jet_Gears
             Application.Exit();
         }
 
-        
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Shelf_Form());
+        }
     }
 }

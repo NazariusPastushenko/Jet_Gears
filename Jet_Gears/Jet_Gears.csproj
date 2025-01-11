@@ -193,6 +193,9 @@
         <Compile Include="Controls\button.cs" />
         <Compile Include="Controls\EgoldsGoogleTextBox.cs" />
         <Compile Include="Controls\Gear_Card.cs" />
+        <Compile Include="Controls\Shelf.cs">
+          <SubType>Component</SubType>
+        </Compile>
         <Compile Include="DataBases\DataBase.cs" />
         <Compile Include="Drawer.cs" />
         <Compile Include="Forms\Advanced_Search.cs">
@@ -200,6 +203,12 @@
         </Compile>
         <Compile Include="Forms\Advanced_Search.Designer.cs">
           <DependentUpon>Advanced_Search.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Forms\Ask_ShelfNum_Form.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Forms\Ask_ShelfNum_Form.Designer.cs">
+          <DependentUpon>Ask_ShelfNum_Form.cs</DependentUpon>
         </Compile>
         <Compile Include="Forms\Basket_Form.cs">
           <SubType>Form</SubType>
@@ -243,6 +252,12 @@
         <Compile Include="Forms\Search_Suggestion.Designer.cs">
           <DependentUpon>Search_Suggestion.cs</DependentUpon>
         </Compile>
+        <Compile Include="Forms\Shelf_Form.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Forms\Shelf_Form.Designer.cs">
+          <DependentUpon>Shelf_Form.cs</DependentUpon>
+        </Compile>
         <Compile Include="Forms\Supply_Form.cs">
           <SubType>Form</SubType>
         </Compile>
@@ -257,8 +272,14 @@
         <Compile Include="Parser\Part_Search_By_Code_Parse.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <EmbeddedResource Include="Controls\Shelf.resx">
+          <DependentUpon>Shelf.cs</DependentUpon>
+        </EmbeddedResource>
         <EmbeddedResource Include="Forms\Advanced_Search.resx">
           <DependentUpon>Advanced_Search.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Forms\Ask_ShelfNum_Form.resx">
+          <DependentUpon>Ask_ShelfNum_Form.cs</DependentUpon>
         </EmbeddedResource>
         <EmbeddedResource Include="Forms\Basket_Form.resx">
           <DependentUpon>Basket_Form.cs</DependentUpon>
@@ -280,6 +301,9 @@
         </EmbeddedResource>
         <EmbeddedResource Include="Forms\Search_Suggestion.resx">
           <DependentUpon>Search_Suggestion.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Forms\Shelf_Form.resx">
+          <DependentUpon>Shelf_Form.cs</DependentUpon>
         </EmbeddedResource>
         <EmbeddedResource Include="Forms\Supply_Form.resx">
           <DependentUpon>Supply_Form.cs</DependentUpon>
