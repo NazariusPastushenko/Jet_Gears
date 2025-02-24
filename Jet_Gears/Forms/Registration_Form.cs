@@ -61,7 +61,7 @@ namespace Jet_Gears
             SqlDataAdapter adapter = new SqlDataAdapter();
 
             DataTable table = new DataTable();
-            var token = Categories.Curr_User_Token;
+            var token = Categories.CurrUserToken;
 
             string querystring =
                 $"INSERT INTO register (login_user, password_user, Surname, Name,Token) VALUES ('{loginUser}','{passUser}','{SurnameUser}','{nameUser}','{token}')";
@@ -71,7 +71,7 @@ namespace Jet_Gears
             if (command.ExecuteNonQuery() == 1)
             {
                 MessageBox.Show("Аккаунт успішно створений", "Успішно", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Categories.Curr_User_Token = BCrypt.Net.BCrypt.HashPassword(loginUser);
+                Categories.CurrUserToken = BCrypt.Net.BCrypt.HashPassword(loginUser);
             }
             Hide();
             Forms.Main_Form main = new Forms.Main_Form();

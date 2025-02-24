@@ -57,7 +57,8 @@ public partial class Ask_ShelfNum_Form : Form
             return;
         }
         string Max_Shelf = Preview_Shelf.ShelfLabelPrefix + Preview_Shelf.ShelfCount + "|";
-        UpdateTextColumn(Categories.Curr_User_Login,Max_Shelf);
+        UpdateTextColumn(Categories.CurrUserLogin,Max_Shelf);
+        Get_Shelves_List(Categories.CurrUserLogin);
         _shelfForm.Write_Shelves();
     }
     
@@ -117,7 +118,7 @@ public partial class Ask_ShelfNum_Form : Form
     
     private bool Check_Availability(string newText)
     {
-        foreach (var s in Categories.Shelves_List)
+        foreach (var s in Categories.ShelvesList)
         {
             if (SplitLetter(s) == newText)
             {
@@ -138,6 +139,47 @@ public partial class Ask_ShelfNum_Form : Form
         Match match = regex.Match(input); 
         return match.Groups[1].Value;  // Літери
             
+    }
+    
+    public void Get_Shelves_List(string user_login)
+    {
+        try
+        {
+            var connection = Gears_Base.getConnection();
+            // Підключення до бази даних
+            string querystring = "SELECT Shelves FROM register WHERE login_user = @UserId";
+
+            SqlCommand command = new SqlCommand(querystring, connection);
+            command.Parameters.AddWithValue("@UserId", user_login);
+
+            connection.Open();
+            SqlDataReader reader = command.ExecuteReader();
+
+            if (reader.Read())
+            {
+                string shelvesText = reader["Shelves"].ToString();
+                // Розділення тексту на список за допомогою Split і додавання в List
+                Categories.ShelvesList = shelvesText
+                    .Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries)
+                    .ToList();  // Перетворюємо масив в List
+                
+                // Використовуємо список для подальших дій
+                foreach (string shelf in Categories.ShelvesList)
+                {
+                    Console.WriteLine(shelf); // Можна працювати з кожним елементом
+                }
+            }
+            else
+            {
+                MessageBox.Show("Рядок не знайдено.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            connection.Close();
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"Помилка: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
     }
     
     private void button2_Click(object sender, EventArgs e)

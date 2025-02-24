@@ -16,16 +16,23 @@ using HtmlDocument = HtmlAgilityPack.HtmlDocument;
 
 public class InitialSearch
 {
-    public static async void Initial_Search(string article)
+    public static async void Initial_Search(string article,string type)
     {
+        string url = "https://www.onlinecarparts.co.uk/spares-search.html?keyword=" + article;
+        if (type == "Node")
+        {
+             url = article;
+        }
+        
         var i = 0;
+        repeat:
         Console.OutputEncoding = Encoding.Unicode;
-        Categories.Search_Gears.Clear();
+        Categories.SearchGears.Clear();
         i++;
         var web = new HtmlWeb();
         try
         {
-            var document = web.Load("https://www.onlinecarparts.co.uk/spares-search.html?keyword=" + article);
+            var document = web.Load(url);
             var productCards = document.DocumentNode.SelectNodes("//div[@class='product-card__wrapper']");
 
 
@@ -75,12 +82,17 @@ public class InitialSearch
                 Console.WriteLine(new string('-', 30));
 
 
-                Categories.Search_Gears.Add(new Search_Gear(title, description, priceUA.ToString(), image,link));
+                Categories.SearchGears.Add(new Search_Gear(title, description, priceUA.ToString(), image,link));
             }
         }
         catch (Exception e)
         {
+            if (i != 3)
+            {
+                goto repeat;
+            }
                 MessageBox.Show("Деталей з таким артикулом не знайдено", "Помилка", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                
                 Console.WriteLine(e);
 
         }

@@ -12,7 +12,6 @@ namespace Jet_Gears.Forms;
 
 public partial class Shelf_Form : Form
 {
-    
     private readonly DataBase Gears_Base = new DataBase();
     private string Shelf_Letter;
     private int Shelf_Number;
@@ -25,52 +24,12 @@ public partial class Shelf_Form : Form
 
     private void button1_Click(object sender, EventArgs e)
     {
-
         Ask_ShelfNum_Form f = new Ask_ShelfNum_Form(this);
         f.Show();
     }
     
     
-    public void Get_Shelves_List(string user_login)
-    {
-        try
-        {
-            var connection = Gears_Base.getConnection();
-            // Підключення до бази даних
-            string querystring = "SELECT Shelves FROM register WHERE login_user = @UserId";
-
-            SqlCommand command = new SqlCommand(querystring, connection);
-            command.Parameters.AddWithValue("@UserId", user_login);
-
-            connection.Open();
-            SqlDataReader reader = command.ExecuteReader();
-
-            if (reader.Read())
-            {
-                string shelvesText = reader["Shelves"].ToString();
-                // Розділення тексту на список за допомогою Split і додавання в List
-                Categories.Shelves_List = shelvesText
-                    .Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries)
-                    .ToList();  // Перетворюємо масив в List
-                
-                // Використовуємо список для подальших дій
-                foreach (string shelf in Categories.Shelves_List)
-                {
-                    Console.WriteLine(shelf); // Можна працювати з кожним елементом
-                }
-            }
-            else
-            {
-                MessageBox.Show("Рядок не знайдено.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
-            connection.Close();
-        }
-        catch (Exception ex)
-        {
-            MessageBox.Show($"Помилка: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-    }
+    
 
     public void SplitString(string input)
     {
@@ -90,8 +49,7 @@ public partial class Shelf_Form : Form
     {
         _latestShelfX = 20;
         Shelf_Panel.Controls.Clear();
-        Get_Shelves_List(Categories.Curr_User_Login);
-        foreach (string shelf in Categories.Shelves_List)
+        foreach (string shelf in Categories.ShelvesList)
         {
             SplitString(shelf);
             ShelfControl s = new ShelfControl();
@@ -105,6 +63,26 @@ public partial class Shelf_Form : Form
             s.BringToFront();
             s.Show();
             Shelf_Panel.Controls.Add(s);
+
+
+            s.ShelfButtonClick += Show_Tag;
         }
+    }
+
+
+    
+    private void Show_Tag(object sender, ShelfButtonClickEventArgs e)
+    {
+        Categories.CurrentMainForm.OpenChildForm(new Search_Shelf_Form(e.ShelfTag));
+        if (Categories.ShelfGears.Count == 0)
+        {
+            Categories.CurrentMainForm.OpenChildForm(new Shelf_Form());
+        }
+    }
+
+
+    private void egoldsGoogleTextBox1_TextChanged(object sender, EventArgs e)
+    {
+        
     }
 }

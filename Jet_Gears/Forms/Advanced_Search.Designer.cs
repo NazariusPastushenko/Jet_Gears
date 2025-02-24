@@ -37,7 +37,6 @@ namespace Jet_Gears
             this.panel2 = new System.Windows.Forms.Panel();
             this.RightArrow_Button = new System.Windows.Forms.Button();
             this.LeftArrow_Button = new System.Windows.Forms.Button();
-            this.Child_Form_Panel = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -124,29 +123,19 @@ namespace Jet_Gears
             this.LeftArrow_Button.UseVisualStyleBackColor = false;
             this.LeftArrow_Button.Click += new System.EventHandler(this.LeftArrow_Button_Click);
             // 
-            // Child_Form_Panel
-            // 
-            this.Child_Form_Panel.BackColor = System.Drawing.Color.Transparent;
-            this.Child_Form_Panel.Location = new System.Drawing.Point(700, 105);
-            this.Child_Form_Panel.Name = "Child_Form_Panel";
-            this.Child_Form_Panel.Size = new System.Drawing.Size(500, 492);
-            this.Child_Form_Panel.TabIndex = 7;
-            // 
             // Advanced_Search
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(144)))), ((int)(((byte)(75)))));
             this.ClientSize = new System.Drawing.Size(1200, 600);
-            this.Controls.Add(this.Child_Form_Panel);
             this.Controls.Add(this.LeftArrow_Button);
             this.Controls.Add(this.RightArrow_Button);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.Advance_Search_BuAdvance_Search_Button_ClickAdvance_Search_Button_Clicktton);
             this.Controls.Add(this.Advanced_Search_TextBox);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Location = new System.Drawing.Point(15, 15);
             this.Name = "Advanced_Search";
             this.Load += new System.EventHandler(this.Advanced_Search_Load);
@@ -160,7 +149,6 @@ namespace Jet_Gears
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button RightArrow_Button;
         private System.Windows.Forms.Button LeftArrow_Button;
-        private System.Windows.Forms.Panel Child_Form_Panel;
 
         #endregion
     }

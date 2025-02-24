@@ -43,7 +43,7 @@ namespace Jet_Gears
 
         private void Basket_Form_Load(object sender, EventArgs e)
         {
-            foreach (Gear g in Categories.Busket_Array)
+            foreach (Gear g in Categories.BusketArray)
             {
                 Create_Busket_Card(g.id,g.gear_code,g.count_of.ToString(),g.maker,g.price.ToString(),g.description,g.picture);   
             }

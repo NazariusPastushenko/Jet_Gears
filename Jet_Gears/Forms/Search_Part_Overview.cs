@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Jet_Gears.DataBases;
+using Jet_Gears.Forms;
 using Jet_Gears.Objects;
 
 namespace Jet_Gears;
@@ -39,28 +40,32 @@ public partial class Search_Part_Overview : Form
 
     private void button2_Click(object sender, EventArgs e)
     {
-        this.Parent.Hide();
         this.Close();
     }
 
     private void button1_Click(object sender, EventArgs e)
     {
-            try
+        Ask_ShelfPlace_Form f = new Ask_ShelfPlace_Form(this);
+        f.Show();
+    }
+
+    public void Add_Part_to_DataBase(string shelf_place,int count_of)
+    {
+        try
     {
         DataBase users = new DataBase();
         
         // Отримання значень з форми
         string gear_code = Current_Part.Article;
-        int count_of = 1;
         string maker = Current_Part.Manufacturer;
         decimal price = decimal.Parse(Current_Part.Price);
         string description = Current_Part.Description;
-        string token = Categories.Curr_User_Token;
+        string token = Categories.CurrUserToken;
 
         // Запит з параметрами
         string querystring = @"
-            INSERT INTO Gears (gear_code, count_of, maker, price, description, picture, user_Token) 
-            VALUES (@GearCode, @CountOf, @Maker, @Price, @Description, @ImageData, @UserToken)";
+            INSERT INTO Gears (gear_code, count_of, maker, price, description, picture, user_Token,Shelf_Placement) 
+            VALUES (@GearCode, @CountOf, @Maker, @Price, @Description, @ImageData, @UserToken,@Shelf_Place)";
 
         using (SqlCommand command = new SqlCommand(querystring, users.getConnection()))
         {
@@ -71,6 +76,7 @@ public partial class Search_Part_Overview : Form
             command.Parameters.AddWithValue("@Price", price);
             command.Parameters.AddWithValue("@Description", description);
             command.Parameters.AddWithValue("@UserToken", token);
+            command.Parameters.AddWithValue("@Shelf_Place", shelf_place);
 
             string someUrl = Current_Part.Part_PictureURL; 
             using (var webClient = new WebClient()) { 

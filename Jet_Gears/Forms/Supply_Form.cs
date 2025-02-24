@@ -16,7 +16,7 @@ namespace Jet_Gears
             InitializeComponent();
             ChoosePictureLabel.BringToFront();
             ChoosePicturePanel.BringToFront();
-            Console.WriteLine(Categories.Curr_User_Token);
+            Console.WriteLine(Categories.CurrUserToken);
             
         }
 
@@ -32,7 +32,7 @@ private void button1_Click(object sender, EventArgs e)
         string maker = MakerTextbox.Text;
         decimal price = decimal.Parse(PriceTextBox.Text);
         string description = DescribtionTextBox.Text;
-        string token = Categories.Curr_User_Token;
+        string token = Categories.CurrUserToken;
 
         // Запит з параметрами
         string querystring = @"

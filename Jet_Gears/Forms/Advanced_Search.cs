@@ -9,22 +9,29 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.IO;
 using System.Text;
+using Jet_Gears.Forms;
 
 namespace Jet_Gears
 {
     public partial class Advanced_Search : Form
     {
-        
+        private Animation slideAnimation;
+        private Timer animationTimer;
+
         public Advanced_Search()
         {
             InitializeComponent();
+
+            animationTimer = new Timer
+            {
+                Interval = 16 // 60 FPS (~16 мс на кадр)
+            };
+            animationTimer.Tick += OnAnimationTick;
         }
-        
-        
+
         private void Advanced_Search_Load(object sender, EventArgs e)
         {
             Show_Cards(0);
-            Child_Form_Panel.Hide();
         }
 
         private int last_card_i = 0;
@@ -33,9 +40,33 @@ namespace Jet_Gears
 
         private async void Advance_Search_Button_Click(object sender, EventArgs e)
         {
+            // Видаляємо попередні картки
             Delete_Cards();
-            InitialSearch.Initial_Search(Advanced_Search_TextBox.Text);
-            Show_Cards(0);
+            // Показуємо лоадінг-екран
+            using (var loadingForm = new Loading_Form()) // Лоадінг-екран
+            {
+                loadingForm.BackColor = Color.FromArgb(123, 144, 75);
+                loadingForm.Show();
+                loadingForm.Refresh();
+                await Task.Delay(100); // Додатковий час для оновлення UI
+
+                
+                
+                // Виконуємо пошук
+                await InitialSearchAsync(Advanced_Search_TextBox.Text, "");
+
+                // Показуємо картки
+                Show_Cards(0);
+                
+                // Закриваємо лоадінг-екран після завершення операцій
+                loadingForm.Close();
+            }
+        }
+
+        private async Task InitialSearchAsync(string searchText, string additionalParam)
+        {
+            // Ваш метод Initial_Search, який виконується асинхронно
+            await Task.Run(() => InitialSearch.Initial_Search(searchText, additionalParam));
         }
 
         private void Create_Search_Card(string gearcode, string price, string description, Image image, string link)
@@ -58,27 +89,25 @@ namespace Jet_Gears
             Controls.Add(card);
             if (image == null)
             {
-                card.LeftImage = Resources.Picture_Icon;}
+                card.LeftImage = Resources.Picture_Icon;
+            }
             else
             {
-
                 card.LeftImage = image;
             }
             card.LeftImageMouseEnter += Search_Card_LeftImageMouseEnter;
             card.LeftImageMouseLeave += Search_Card_LeftImageMouseLeave;
             card.Click += Search_Card_Click;
         }
-        
+
         private void Search_Card_Click(object sender, EventArgs e)
         {
             GearCard gearCard = sender as GearCard;
             Search_Part_Overview overview_form = new Search_Part_Overview(Part_Search_By_Code_Parse.Part_URL_Search(gearCard.link));
-            
-            openChildForm(overview_form);
 
+            OpenChildFormWithAnimation(overview_form);
         }
-        
-        
+
         private void Search_Card_LeftImageMouseEnter(object sender, EventArgs e)
         {
             GearCard gearCard = sender as GearCard;
@@ -88,14 +117,14 @@ namespace Jet_Gears
             p.BackgroundImageLayout = ImageLayout.Stretch;
             p.Size = new Size(300, 300);
             p.Location = new Point(80, 150);
-            
+
             p.BorderStyle = BorderStyle.FixedSingle;
             Controls.Add(p);
             Controls.SetChildIndex(p, 0);
             p.Tag = "ZoomPicture";
             SuspendLayout();
         }
-        
+
         private void Search_Card_LeftImageMouseLeave(object sender, EventArgs e)
         {
             foreach (Control c in Controls)
@@ -108,27 +137,27 @@ namespace Jet_Gears
 
             ResumeLayout();
         }
-        
+
         private async void Show_Cards(int start_i)
         {
             Search_Gear item = null;
             Image img = null;
-            for (int i = start_i; i <= start_i+5; i++)
+            for (int i = start_i; i <= start_i + 5; i++)
             {
                 try
                 {
-                    item = Categories.Search_Gears[i];
+                    item = Categories.SearchGears[i];
                 }
                 catch (Exception e)
                 {
                     return;
                 }
-                if (Categories.Search_Gears[i].ImgURL != null)
+                if (Categories.SearchGears[i].ImgURL != null)
                 {
-                    
-                    img = await LoadImageFromUrlAsync(Categories.Search_Gears[i].ImgURL);
+
+                    img = await LoadImageFromUrlAsync(Categories.SearchGears[i].ImgURL);
                 }
-                Create_Search_Card(item.title,item.price,item.description,img,item.title_link);
+                Create_Search_Card(item.title, item.price, item.description, img, item.title_link);
             }
         }
         private void Delete_Cards()
@@ -143,8 +172,8 @@ namespace Jet_Gears
                 }
             }
         }
-        
-        
+
+
         private async Task<Image> LoadImageFromUrlAsync(string url)
         {
             using (HttpClient client = new HttpClient())
@@ -158,7 +187,6 @@ namespace Jet_Gears
                 }
             }
         }
-
 
         private void LeftArrow_Button_Click(object sender, EventArgs e)
         {
@@ -177,39 +205,56 @@ namespace Jet_Gears
         private void RightArrow_Button_Click(object sender, EventArgs e)
         {
             last_card_i += 6;
-            if (last_card_i > Categories.Search_Gears.Count)
+            if (last_card_i > Categories.SearchGears.Count)
             {
                 last_card_i -= 6;
                 return;
-                
+
             }
             Delete_Cards();
             Show_Cards(last_card_i);
         }
-        
+
         private Form activeForm = null;
-        public void openChildForm(Form childform)
+        public void OpenChildFormWithAnimation(Form childForm)
         {
             if (activeForm != null)
             {
                 activeForm.Close();
             }
-            activeForm = childform;
-            
-            childform.TopLevel = false;
-            childform.FormBorderStyle = FormBorderStyle.None;
-            childform.Dock = DockStyle.Fill;
-            Child_Form_Panel.Controls.Clear();
 
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Left = Width; // Початкова позиція за межами правої сторони
+            childForm.Top = 0;
+            childForm.Height = ClientSize.Height;
+            childForm.Width = 500; // Ширина форми огляду
+            Controls.Add(childForm);
+            Controls.SetChildIndex(childForm, 0);
 
-            Child_Form_Panel.Controls.Add(childform);
-            Child_Form_Panel.Tag = childform;
-            
-            childform.BringToFront();
-            Child_Form_Panel.Show();
-            childform.Show();
+            slideAnimation = new Animation(
+                "SlideIn",
+                () => childForm.Invalidate(),
+                childForm.Left,
+                Width - childForm.Width
+            );
 
-            
+            animationTimer.Start();
+            childForm.Show();
         }
+
+        private void OnAnimationTick(object sender, EventArgs e)
+        {
+            if (slideAnimation.Status != Animation.AnimationStatus.Completed)
+            {
+                slideAnimation.UpdateFrame();
+                activeForm.Left = (int)slideAnimation.Value;
+            }
+            else
+            {
+                animationTimer.Stop();
+            }
         }
+    }
 }

@@ -46,8 +46,8 @@ namespace Jet_Gears
             if (table.Rows.Count == 1)
             {
                 MessageBox.Show("Ви успішно зайшли", "Успішно", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Categories.Curr_User_Token = loginUser.GetHashCode().ToString();
-                Categories.Curr_User_Login = loginUser;
+                Categories.CurrUserToken = loginUser.GetHashCode().ToString();
+                Categories.CurrUserLogin = loginUser;
                 Forms.Main_Form frm1 = new Forms.Main_Form();
                 Hide();
                 frm1.ShowDialog();

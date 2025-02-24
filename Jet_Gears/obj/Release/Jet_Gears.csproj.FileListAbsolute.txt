@@ -8,7 +8,6 @@ C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Advanced_
 C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Basket_Form.resources
 C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Enter_Form.resources
 C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Registration_Form.resources
-C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Search_Suggestion.resources
 C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Supply_Form.resources
 C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Properties.Resources.resources
 C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.csproj.GenerateResource.cache
@@ -55,3 +54,11 @@ C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Forms.Mai
 C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Forms.Shelf_Form.resources
 C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\ShelfControl.resources
 C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Forms.Ask_ShelfNum_Form.resources
+C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Forms.Ask_ShelfPlace_Form.resources
+C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Forms.Makers_Form.resources
+C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Forms.Models_Form.resources
+C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Forms.Car_Nodes_Form.resources
+C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Controls.ImageTextButton.resources
+C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Forms.Mark_Form.resources
+C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Forms.Car_Form.resources
+C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Forms.PartsFromNode_Form.resources

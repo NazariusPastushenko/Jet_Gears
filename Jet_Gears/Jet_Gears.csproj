@@ -193,6 +193,9 @@
         <Compile Include="Controls\button.cs" />
         <Compile Include="Controls\EgoldsGoogleTextBox.cs" />
         <Compile Include="Controls\Gear_Card.cs" />
+        <Compile Include="Controls\Model_Card.cs">
+          <SubType>Component</SubType>
+        </Compile>
         <Compile Include="Controls\Shelf.cs">
           <SubType>Component</SubType>
         </Compile>
@@ -210,11 +213,35 @@
         <Compile Include="Forms\Ask_ShelfNum_Form.Designer.cs">
           <DependentUpon>Ask_ShelfNum_Form.cs</DependentUpon>
         </Compile>
+        <Compile Include="Forms\Ask_ShelfPlace_Form.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Forms\Ask_ShelfPlace_Form.Designer.cs">
+          <DependentUpon>Ask_ShelfPlace_Form.cs</DependentUpon>
+        </Compile>
         <Compile Include="Forms\Basket_Form.cs">
           <SubType>Form</SubType>
         </Compile>
         <Compile Include="Forms\Basket_Form.Designer.cs">
           <DependentUpon>Basket_Form.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Forms\Car_Form.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Forms\Car_Form.Designer.cs">
+          <DependentUpon>Car_Form.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Forms\Car_Nodes_Form.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Forms\Car_Nodes_Form.Designer.cs">
+          <DependentUpon>Car_Nodes_Form.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Forms\Loading_Form.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Forms\Loading_Form.Designer.cs">
+          <DependentUpon>Loading_Form.cs</DependentUpon>
         </Compile>
         <Compile Include="Forms\Main_Form.cs">
           <SubType>Form</SubType>
@@ -227,6 +254,30 @@
         </Compile>
         <Compile Include="Forms\Enter_Form.Designer.cs">
           <DependentUpon>Enter_Form.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Forms\Makers_Form.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Forms\Makers_Form.Designer.cs">
+          <DependentUpon>Makers_Form.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Forms\Models_Form.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Forms\Models_Form.Designer.cs">
+          <DependentUpon>Models_Form.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Forms\Mark_Form.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Forms\Mark_Form.Designer.cs">
+          <DependentUpon>Mark_Form.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Forms\PartsFromNode_Form.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Forms\PartsFromNode_Form.Designer.cs">
+          <DependentUpon>PartsFromNode_Form.cs</DependentUpon>
         </Compile>
         <Compile Include="Forms\Registration_Form.cs">
           <SubType>Form</SubType>
@@ -246,12 +297,6 @@
         <Compile Include="Forms\Search_Shelf_Form.Designer.cs">
           <DependentUpon>Search_Shelf_Form.cs</DependentUpon>
         </Compile>
-        <Compile Include="Forms\Search_Suggestion.cs">
-          <SubType>Form</SubType>
-        </Compile>
-        <Compile Include="Forms\Search_Suggestion.Designer.cs">
-          <DependentUpon>Search_Suggestion.cs</DependentUpon>
-        </Compile>
         <Compile Include="Forms\Shelf_Form.cs">
           <SubType>Form</SubType>
         </Compile>
@@ -264,14 +309,23 @@
         <Compile Include="Forms\Supply_Form.Designer.cs">
           <DependentUpon>Supply_Form.cs</DependentUpon>
         </Compile>
+        <Compile Include="Objects\Car.cs" />
+        <Compile Include="Objects\Car_Model.cs" />
+        <Compile Include="Objects\Car_Node.cs" />
         <Compile Include="Objects\Gear.cs" />
+        <Compile Include="Objects\Car_Mark.cs" />
         <Compile Include="Objects\OverviewPart.cs" />
+        <Compile Include="Objects\Part_Nodes.cs" />
+        <Compile Include="Objects\RootMaker.cs" />
         <Compile Include="Objects\Search_Gear.cs" />
         <Compile Include="Objects\Shelf_Gear.cs" />
         <Compile Include="Parser\InitialSeach.cs" />
         <Compile Include="Parser\Part_Search_By_Code_Parse.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <EmbeddedResource Include="Controls\Model_Card.resx">
+          <DependentUpon>Model_Card.cs</DependentUpon>
+        </EmbeddedResource>
         <EmbeddedResource Include="Controls\Shelf.resx">
           <DependentUpon>Shelf.cs</DependentUpon>
         </EmbeddedResource>
@@ -281,14 +335,35 @@
         <EmbeddedResource Include="Forms\Ask_ShelfNum_Form.resx">
           <DependentUpon>Ask_ShelfNum_Form.cs</DependentUpon>
         </EmbeddedResource>
+        <EmbeddedResource Include="Forms\Ask_ShelfPlace_Form.resx">
+          <DependentUpon>Ask_ShelfPlace_Form.cs</DependentUpon>
+        </EmbeddedResource>
         <EmbeddedResource Include="Forms\Basket_Form.resx">
           <DependentUpon>Basket_Form.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Forms\Car_Form.resx">
+          <DependentUpon>Car_Form.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Forms\Car_Nodes_Form.resx">
+          <DependentUpon>Car_Nodes_Form.cs</DependentUpon>
         </EmbeddedResource>
         <EmbeddedResource Include="Forms\Main_Form.resx">
           <DependentUpon>Main_Form.cs</DependentUpon>
         </EmbeddedResource>
         <EmbeddedResource Include="Forms\Enter_Form.resx">
           <DependentUpon>Enter_Form.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Forms\Makers_Form.resx">
+          <DependentUpon>Makers_Form.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Forms\Models_Form.resx">
+          <DependentUpon>Models_Form.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Forms\Mark_Form.resx">
+          <DependentUpon>Mark_Form.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Forms\PartsFromNode_Form.resx">
+          <DependentUpon>PartsFromNode_Form.cs</DependentUpon>
         </EmbeddedResource>
         <EmbeddedResource Include="Forms\Registration_Form.resx">
           <DependentUpon>Registration_Form.cs</DependentUpon>
@@ -298,9 +373,6 @@
         </EmbeddedResource>
         <EmbeddedResource Include="Forms\Search_Shelf_Form.resx">
           <DependentUpon>Search_Shelf_Form.cs</DependentUpon>
-        </EmbeddedResource>
-        <EmbeddedResource Include="Forms\Search_Suggestion.resx">
-          <DependentUpon>Search_Suggestion.cs</DependentUpon>
         </EmbeddedResource>
         <EmbeddedResource Include="Forms\Shelf_Form.resx">
           <DependentUpon>Shelf_Form.cs</DependentUpon>

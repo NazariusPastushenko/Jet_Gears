@@ -39,8 +39,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.Shelf_Button = new System.Windows.Forms.Button();
             this.panel10 = new System.Windows.Forms.Panel();
             this.Search_Button = new System.Windows.Forms.Button();
             this.Supply_Button = new System.Windows.Forms.Button();
@@ -180,8 +180,8 @@
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
+            this.panel8.Controls.Add(this.button4);
             this.panel8.Controls.Add(this.button3);
-            this.panel8.Controls.Add(this.Shelf_Button);
             this.panel8.Controls.Add(this.panel10);
             this.panel8.Controls.Add(this.Search_Button);
             this.panel8.Controls.Add(this.Supply_Button);
@@ -191,6 +191,26 @@
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(1197, 70);
             this.panel8.TabIndex = 1;
+            // 
+            // button4
+            // 
+            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.button4.BackColor = System.Drawing.Color.Silver;
+            this.button4.BackgroundImage = global::Jet_Gears.Properties.Resources._2736918;
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button4.ForeColor = System.Drawing.Color.White;
+            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button4.Location = new System.Drawing.Point(500, 6);
+            this.button4.Name = "button4";
+            this.button4.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button4.Size = new System.Drawing.Size(112, 53);
+            this.button4.TabIndex = 8;
+            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -210,26 +230,6 @@
             this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // Shelf_Button
-            // 
-            this.Shelf_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.Shelf_Button.BackColor = System.Drawing.Color.Transparent;
-            this.Shelf_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Shelf_Button.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
-            this.Shelf_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Shelf_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Shelf_Button.ForeColor = System.Drawing.Color.White;
-            this.Shelf_Button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Shelf_Button.Location = new System.Drawing.Point(509, 11);
-            this.Shelf_Button.Name = "Shelf_Button";
-            this.Shelf_Button.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Shelf_Button.Size = new System.Drawing.Size(163, 42);
-            this.Shelf_Button.TabIndex = 6;
-            this.Shelf_Button.Text = "Наявність";
-            this.Shelf_Button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.Shelf_Button.UseVisualStyleBackColor = true;
-            this.Shelf_Button.Click += new System.EventHandler(this.Shelf_Button_Click);
             // 
             // panel10
             // 
@@ -335,9 +335,9 @@
             this.ResumeLayout(false);
         }
 
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
 
-        private System.Windows.Forms.Button Shelf_Button;
+        private System.Windows.Forms.Button button3;
 
         private System.Windows.Forms.Panel panel10;
 

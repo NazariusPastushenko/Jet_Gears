@@ -8,6 +8,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using Jet_Gears;
+using ContentAlignment = System.Drawing.ContentAlignment;
 
 namespace Jet_Gears.Controls
 {
@@ -148,6 +149,46 @@ namespace Jet_Gears.Controls
         {
             base.OnPaint(e);
 
+            switch (TextAlign)
+            {
+                case ContentAlignment.TopLeft:
+                    SF.Alignment = StringAlignment.Near;
+                    SF.LineAlignment = StringAlignment.Near;
+                    break;
+                case ContentAlignment.TopCenter:
+                    SF.Alignment = StringAlignment.Center;
+                    SF.LineAlignment = StringAlignment.Near;
+                    break;
+                case ContentAlignment.TopRight:
+                    SF.Alignment = StringAlignment.Far;
+                    SF.LineAlignment = StringAlignment.Near;
+                    break;
+                case ContentAlignment.MiddleLeft:
+                    SF.Alignment = StringAlignment.Near;
+                    SF.LineAlignment = StringAlignment.Center;
+                    break;
+                case ContentAlignment.MiddleCenter:
+                    SF.Alignment = StringAlignment.Center;
+                    SF.LineAlignment = StringAlignment.Center;
+                    break;
+                case ContentAlignment.MiddleRight:
+                    SF.Alignment = StringAlignment.Far;
+                    SF.LineAlignment = StringAlignment.Center;
+                    break;
+                case ContentAlignment.BottomLeft:
+                    SF.Alignment = StringAlignment.Near;
+                    SF.LineAlignment = StringAlignment.Far;
+                    break;
+                case ContentAlignment.BottomCenter:
+                    SF.Alignment = StringAlignment.Center;
+                    SF.LineAlignment = StringAlignment.Far;
+                    break;
+                case ContentAlignment.BottomRight:
+                    SF.Alignment = StringAlignment.Far;
+                    SF.LineAlignment = StringAlignment.Far;
+                    break;
+            }
+            
             Graphics graph = e.Graphics;
             graph.SmoothingMode = SmoothingMode.HighQuality;
             graph.InterpolationMode = InterpolationMode.HighQualityBicubic;

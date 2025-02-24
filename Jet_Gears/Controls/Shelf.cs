@@ -14,7 +14,7 @@ public class ShelfControl : Control
     private Color lineColor = Color.Black;
     private int shelfWidth = 100;
     private string shelfLabelPrefix = "A";
-    
+
     [Category("Custom Properties"), Description("Number of shelves")]
     public int ShelfCount
     {
@@ -49,6 +49,8 @@ public class ShelfControl : Control
         get => shelfLabelPrefix;
         set { shelfLabelPrefix = value; Invalidate(); AddShelfButtons(); }
     }
+
+    public event EventHandler<ShelfButtonClickEventArgs> ShelfButtonClick;
 
     public ShelfControl()
     {
@@ -108,18 +110,42 @@ public class ShelfControl : Control
         {
             float y = i * totalSpacing;
 
-            button button = new button()
+            button button = new button
             {
                 Text = $"{shelfLabelPrefix}{i}",
                 Tag = $"{shelfLabelPrefix}{i}",
-                Location = new Point(leftX + (shelfWidth / 2) - 25, (int)y - 30), // Точно над полицею
-                Size = new Size(70, 30),
+                Location = new Point(leftX + shelfWidth + 10, (int)y - 15), // Position beside the shelf
+                Size = new Size(50, 30),
                 BackColor = Color.FromArgb(39, 59, 9)
             };
             button.ForeColor = Color.White;
-            button.Font = new Font("Bahnschrift SemiBold SemiConden", 15,FontStyle.Bold);
+            button.Font = new Font("Bahnschrift SemiBold SemiConden", 15, FontStyle.Bold);
+            button.Click += ShelfButton_Click;
+
             Controls.Add(button);
         }
     }
 
+    private void ShelfButton_Click(object sender, EventArgs e)
+    {
+        if (sender is Button button && button.Tag is string tag)
+        {
+            OnShelfButtonClick(new ShelfButtonClickEventArgs(tag));
+        }
+    }
+
+    protected virtual void OnShelfButtonClick(ShelfButtonClickEventArgs e)
+    {
+        ShelfButtonClick?.Invoke(this, e);
+    }
+}
+
+public class ShelfButtonClickEventArgs : EventArgs
+{
+    public string ShelfTag { get; }
+
+    public ShelfButtonClickEventArgs(string shelfTag)
+    {
+        ShelfTag = shelfTag;
+    }
 }
