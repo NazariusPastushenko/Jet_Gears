@@ -65,7 +65,7 @@ public partial class Ask_ShelfNum_Form : Form
     
     
     
-    public void UpdateTextColumn(string user_login, string newText)
+    public void UpdateTextColumn(string userLogin, string newText)
     {
         
         try
@@ -81,12 +81,15 @@ public partial class Ask_ShelfNum_Form : Form
             // Запит на оновлення значення
             string querystring = "UPDATE register SET Shelves = CAST(ISNULL(Shelves, '') AS NVARCHAR(MAX)) + @NewValue WHERE login_user = @UserId";
 
+            
+            
+            
             // Команда для виконання запиту
             SqlCommand command = new SqlCommand(querystring,connection);
-
-            // Додаємо параметри, щоб уникнути SQL-ін'єкцій
             command.Parameters.AddWithValue("@NewValue", newText);
-            command.Parameters.AddWithValue("@UserId", user_login);
+            command.Parameters.AddWithValue("@UserId", userLogin);
+            // Додаємо параметри, щоб уникнути SQL-ін'єкцій
+            
 
             // SqlDataAdapter для виконання команди
             SqlDataAdapter adapter = new SqlDataAdapter

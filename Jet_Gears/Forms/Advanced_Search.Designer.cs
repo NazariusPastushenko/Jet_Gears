@@ -101,7 +101,7 @@ namespace Jet_Gears
             this.RightArrow_Button.FlatAppearance.BorderSize = 0;
             this.RightArrow_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RightArrow_Button.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.RightArrow_Button.Location = new System.Drawing.Point(631, 537);
+            this.RightArrow_Button.Location = new System.Drawing.Point(609, 541);
             this.RightArrow_Button.Name = "RightArrow_Button";
             this.RightArrow_Button.Size = new System.Drawing.Size(71, 59);
             this.RightArrow_Button.TabIndex = 5;
@@ -116,7 +116,7 @@ namespace Jet_Gears
             this.LeftArrow_Button.FlatAppearance.BorderSize = 0;
             this.LeftArrow_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LeftArrow_Button.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.LeftArrow_Button.Location = new System.Drawing.Point(554, 537);
+            this.LeftArrow_Button.Location = new System.Drawing.Point(532, 541);
             this.LeftArrow_Button.Name = "LeftArrow_Button";
             this.LeftArrow_Button.Size = new System.Drawing.Size(71, 60);
             this.LeftArrow_Button.TabIndex = 6;
@@ -139,6 +139,7 @@ namespace Jet_Gears
             this.Location = new System.Drawing.Point(15, 15);
             this.Name = "Advanced_Search";
             this.Load += new System.EventHandler(this.Advanced_Search_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Advanced_Search_KeyDown);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
         }

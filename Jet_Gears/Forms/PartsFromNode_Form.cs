@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using Jet_Gears.Controls;
 using Jet_Gears.Objects;
+using Jet_Gears.Parser;
 
 namespace Jet_Gears.Forms;
 
@@ -13,7 +14,7 @@ public partial class PartsFromNode_Form : Form
     private Point Current_Location;
 
     
-    public PartsFromNode_Form(List<AutoPart> list)
+    public PartsFromNode_Form(List<AvtoZvuk_Node.PartItem> list)
     {
         InitializeComponent();
         Write_Parts_Buttons(list);
@@ -22,7 +23,7 @@ public partial class PartsFromNode_Form : Form
     
     
     
-    private void Write_Parts_Buttons(List<AutoPart> parts)
+    private void Write_Parts_Buttons(List<AvtoZvuk_Node.PartItem> parts)
     {
         Clean_Buttons();
         Current_Location = new Point(5, 5);
@@ -49,7 +50,7 @@ public partial class PartsFromNode_Form : Form
     private void Find_Parts_By_Node(object sender, EventArgs e)
     {
         ImageTextButton b = sender as ImageTextButton;
-        InitialSearch.Initial_Search(b.Name,"Node");
+        InitialSearch_AvtoZvuk.Initial_Search_Zvuk(b.Name,"Node");
         Categories.CurrentMainForm.OpenChildForm(new Advanced_Search());
     }
 

@@ -138,7 +138,7 @@ public partial class Models_Form : Form
     {
         button b = sender as button;
         Categories.ChoosenModelHref = b.Name;
-        Categories.CurrentMainForm.OpenChildForm(new Mark_Form(Categories.ChoosenModelHref));
+        Categories.CurrentMainForm.OpenChildForm(new Mark_Form(Categories.ChoosenModelHref),false);
     }
 
 

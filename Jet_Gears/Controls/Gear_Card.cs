@@ -12,40 +12,44 @@ namespace Jet_Gears.Controls
     {
         public string link { get; set; }
         public Gear Card_object { get; set; }
+
         [Category("Images")]
         [Description("Image displayed on the left side.")]
         public Image LeftImage { get; set; }
 
         [Category("Images")]
-        [Description("Image displayed on the right bottom.")]
-        public Image RightBottomImage { get; set; }
+        [Description("Background image for the right bottom button.")]
+        public Image RightBottomButtonImage
+        {
+            get => rightBottomButton.BackgroundImage;
+            set => rightBottomButton.BackgroundImage = value;
+        }
 
         [Category("Images")]
-        [Browsable(true)]
         [Description("Width of the left image.")]
         public int LeftImageWidth { get; set; } = 40;
 
         [Category("Images")]
-        [Browsable(true)]
         [Description("Height of the left image.")]
         public int LeftImageHeight { get; set; } = 40;
 
         [Category("Images")]
-        [Browsable(true)]
-        [Description("Width of the right bottom image.")]
-        public int RightBottomImageWidth { get; set; } = 20;
-
-        [Category("Images")]
-        [Browsable(true)]
-        [Description("Height of the right bottom image.")]
-        public int RightBottomImageHeight { get; set; } = 20;
+        [Description("Size of the right bottom button.")]
+        public Size RightBottomButtonSize
+        {
+            get => rightBottomButton.Size;
+            set
+            {
+                rightBottomButton.Size = value;
+                Invalidate(); // перемалювати при зміні
+                UpdateButtonPosition();
+            }
+        }
 
         [Category("Text")]
-        [Description("Font size of the main text labels.")]
         public float MainTextSize { get; set; } = 10;
 
         [Category("Text")]
-        [Description("Font size of the right labels.")]
         public float RightTextSize { get; set; } = 10;
 
         [Category("Text")]
@@ -68,26 +72,47 @@ namespace Jet_Gears.Controls
 
         [Category("Appearance")]
         public int CornerRadius { get; set; } = 15;
-        
+
         public event EventHandler LeftImageMouseEnter;
-        
         public event EventHandler LeftImageMouseLeave;
-        
         public event EventHandler BusketIcon_ImageClick;
-        
+
         private bool isMouseOverLeftImage = false;
+        private readonly Button rightBottomButton;
 
         public GearCard()
         {
-            // Встановлюємо базові розміри контролу
             Size = new Size(1200, 60);
             DoubleBuffered = true;
             BackColor = Color.White;
-            MinimumSize = new Size(100, 40); // Мінімальні розміри для правильного відображення
-            
-            this.MouseMove += GearCard_MouseMove;
-            this.MouseLeave += GearCard_MouseLeave;
-            this.MouseClick += GearCard_BusketIcon_MouseClick;
+            MinimumSize = new Size(100, 40);
+
+            rightBottomButton = new Button
+            {
+                Size = new Size(20, 20),
+                FlatStyle = FlatStyle.Flat,
+                BackgroundImageLayout = ImageLayout.Stretch,
+                TabStop = false
+            };
+            rightBottomButton.FlatAppearance.BorderSize = 0;
+            rightBottomButton.Click += (s, e) => BusketIcon_ImageClick?.Invoke(this, EventArgs.Empty);
+            Controls.Add(rightBottomButton);
+
+            MouseMove += GearCard_MouseMove;
+            MouseLeave += GearCard_MouseLeave;
+        }
+
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            UpdateButtonPosition();
+        }
+
+        private void UpdateButtonPosition()
+        {
+                if (rightBottomButton == null)
+                    return;
+                rightBottomButton.Location = new Point(this.Width - rightBottomButton.Width - 10, this.Height - rightBottomButton.Height - 10);
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -95,111 +120,70 @@ namespace Jet_Gears.Controls
             base.OnPaint(e);
             Graphics g = e.Graphics;
 
-            // Draw rounded background
-            Rectangle rect = new Rectangle(0, 0, this.Width - 1, this.Height - 1);
+            Rectangle rect = new Rectangle(0, 0, Width - 1, Height - 1);
             if (RoundedCorners)
             {
-                using (GraphicsPath path = GetRoundedRectanglePath(rect, CornerRadius))
-                {
-                    using (SolidBrush brush = new SolidBrush(this.BackColor))
-                    {
-                        g.FillPath(brush, path);
-                    }
-                    using (Pen pen = new Pen(BorderColor))
-                    {
-                        g.DrawPath(pen, path);
-                    }
-                }
+                using var path = GetRoundedRectanglePath(rect, CornerRadius);
+                using var brush = new SolidBrush(BackColor);
+                g.FillPath(brush, path);
+                using var pen = new Pen(BorderColor);
+                g.DrawPath(pen, path);
             }
             else
             {
-                using (SolidBrush brush = new SolidBrush(this.BackColor))
-                {
-                    g.FillRectangle(brush, rect);
-                }
-                using (Pen pen = new Pen(BorderColor))
-                {
-                    g.DrawRectangle(pen, rect);
-                }
+                using var brush = new SolidBrush(BackColor);
+                g.FillRectangle(brush, rect);
+                using var pen = new Pen(BorderColor);
+                g.DrawRectangle(pen, rect);
             }
 
-            // Draw left image if available
+            // Ліва картинка
             if (LeftImage != null)
             {
                 g.DrawImage(LeftImage, new Rectangle(10, 10, LeftImageWidth, LeftImageHeight));
             }
 
-            // Draw main text labels
-            using (Font font = new Font("Bahnschrift SemiBold SemiConden", MainTextSize))
-            using (Brush textBrush = new SolidBrush(this.ForeColor))
-            {
-                g.DrawString(NameLabel, font, textBrush, new PointF(LeftImageWidth+10, 10));
-                g.DrawString(DescriptionLabel, font, textBrush, new PointF(LeftImageWidth+10, 30));
-            }
+            // Тексти зліва
+            using var mainFont = new Font("Bahnschrift SemiBold SemiConden", MainTextSize);
+            using var textBrush = new SolidBrush(ForeColor);
+            g.DrawString(NameLabel, mainFont, textBrush, new PointF(LeftImageWidth + 10, 10));
+            g.DrawString(DescriptionLabel, mainFont, textBrush, new PointF(LeftImageWidth + 10, 30));
 
-            // Draw right text labels
-            using (Font font = new Font("Bahnschrift SemiBold SemiConden", RightTextSize))
-            {
-                SizeF sizeRightLabel1 = g.MeasureString(PriceLabel, font);
-                SizeF sizeRightLabel2 = g.MeasureString(RightLabel2Text, font);
-
-                g.DrawString(PriceLabel, font, Brushes.Black, new PointF(this.Width - sizeRightLabel1.Width - 60, 10));
-                g.DrawString(RightLabel2Text, font, Brushes.Black, new PointF(this.Width - sizeRightLabel2.Width - 60, 30));
-            }
-
-            // Draw right bottom image if available
-            if (RightBottomImage != null)
-            {
-                g.DrawImage(RightBottomImage, new Rectangle(this.Width - RightBottomImageWidth - 10, this.Height - RightBottomImageHeight - 10, RightBottomImageWidth, RightBottomImageHeight));
-            }
+            // Тексти справа
+            using var rightFont = new Font("Bahnschrift SemiBold SemiConden", RightTextSize);
+            var sizeRightLabel1 = g.MeasureString(PriceLabel, rightFont);
+            var sizeRightLabel2 = g.MeasureString(RightLabel2Text, rightFont);
+            g.DrawString(PriceLabel, rightFont, Brushes.Black, new PointF(Width - 500, 10));
+            g.DrawString(RightLabel2Text, rightFont, Brushes.Black, new PointF(Width - sizeRightLabel2.Width - 40, 30));
         }
-        
-        
-        private void GearCard_BusketIcon_MouseClick(object sender, MouseEventArgs e)
-        {
-            // Перевірка, чи був клік всередині області правого нижнього зображення
-            Rectangle rightBottomImageBounds = new Rectangle(this.Width - RightBottomImageWidth - 10, this.Height - RightBottomImageHeight - 10, RightBottomImageWidth, RightBottomImageHeight);
-            if (RightBottomImage != null && rightBottomImageBounds.Contains(e.Location))
-            {
-                // Якщо натискання в межах правого нижнього зображення, піднімаємо подію
-                BusketIcon_ImageClick?.Invoke(this, EventArgs.Empty);
-            }
-        }
-        
+
         private void GearCard_MouseMove(object sender, MouseEventArgs e)
         {
-            // Перевірка, чи курсор всередині області лівого зображення
             Rectangle leftImageBounds = new Rectangle(10, 10, LeftImageWidth, LeftImageHeight);
             if (LeftImage != null && leftImageBounds.Contains(e.Location))
             {
-                // Якщо наведено, і ми ще не підняли подію, викликаємо LeftImageMouseEnter
                 if (!isMouseOverLeftImage)
                 {
                     isMouseOverLeftImage = true;
                     LeftImageMouseEnter?.Invoke(this, EventArgs.Empty);
                 }
             }
-            else
+            else if (isMouseOverLeftImage)
             {
-                // Якщо курсор виходить за межі зображення, піднімаємо подію LeftImageMouseLeave
-                if (isMouseOverLeftImage)
-                {
-                    isMouseOverLeftImage = false;
-                    LeftImageMouseLeave?.Invoke(this, EventArgs.Empty);
-                }
+                isMouseOverLeftImage = false;
+                LeftImageMouseLeave?.Invoke(this, EventArgs.Empty);
             }
         }
 
         private void GearCard_MouseLeave(object sender, EventArgs e)
         {
-            // Якщо курсор залишає контроль, піднімаємо подію LeftImageMouseLeave, якщо потрібно
             if (isMouseOverLeftImage)
             {
                 isMouseOverLeftImage = false;
                 LeftImageMouseLeave?.Invoke(this, EventArgs.Empty);
             }
         }
-        
+
         private GraphicsPath GetRoundedRectanglePath(Rectangle rect, int radius)
         {
             GraphicsPath path = new GraphicsPath();
@@ -211,9 +195,5 @@ namespace Jet_Gears.Controls
             path.CloseFigure();
             return path;
         }
-        
-        
-        
-        
     }
 }

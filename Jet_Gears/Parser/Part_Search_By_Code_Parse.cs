@@ -71,7 +71,23 @@ public class Part_Search_By_Code_Parse
                     }
                 }
             }
-
+            List<string> modelsArray = null;
+            var modelTitles = doc.DocumentNode
+                .SelectNodes("//div[contains(@class, 'compatibility__model-title')]")
+                ?.Select(node => node.InnerText.Trim())
+                .ToList();
+            
+            
+            // Перевірка і вивід
+            if (modelTitles != null)
+            {
+                modelsArray = modelTitles.ToList();
+            }
+            else
+            {
+                Console.WriteLine("Моделі не знайдено.");
+            }
+            
             
             
             Console.WriteLine("Title:");
@@ -98,6 +114,12 @@ public class Part_Search_By_Code_Parse
             {
                 Console.WriteLine($"{entry.Key}: {entry.Value}");
             }
+            
+            foreach (var model in modelsArray)
+            {
+                Console.WriteLine(model);
+            }
+
 
             string brand_img = pictures[0];
             string part_img = pictures[1];
@@ -115,4 +137,70 @@ public class Part_Search_By_Code_Parse
 
         return Return_part;
     }
+    
+    
+    public static void PartZvuk_URL_Search(string url)
+    {
+        Console.OutputEncoding = Encoding.Unicode;
+        var web = new HtmlWeb();
+            try
+            {
+                var document = web.Load(url);
+                // Зображення товару (за допомогою XPath для атрибуту src)
+                var imageNode = document.DocumentNode.SelectSingleNode("//div[@class='product-view-header__wrap-img']/a/img");
+                var imageUrl = imageNode?.GetAttributeValue("data-src", imageNode?.GetAttributeValue("src", "none"));
+                // Витягуємо назву з title-item
+                var titleNode = document.DocumentNode.SelectSingleNode("//div[@class='g-container']/h1");
+                var title = titleNode?.InnerText ?? "Немає назви";
+                // Витягуємо ціну з price
+                var priceNode = document.DocumentNode.SelectSingleNode(".//div[@class='product-view-prices__base-price-number']");
+                var price = priceNode?.InnerText;
+                var tableRows = document.DocumentNode.SelectNodes("//div[contains(@class, 'aside-main-table__tr')]");
+                var tableData = new List<KeyValuePair<string, string>>();
+        
+                if (tableRows != null)
+                {
+                    foreach (var row in tableRows)
+                    {
+                        var cells = row.SelectNodes("div[contains(@class, 'aside-main-table__td')]");
+                
+                        if (cells != null && cells.Count == 2)
+                        {
+                            string key = cells[0].InnerText.Trim();
+                            string value = string.Join(", ", cells[1].SelectNodes(".//a")?.Select(a => a.InnerText.Trim()) ?? new List<string> { cells[1].InnerText.Trim() });
+                    
+                            tableData.Add(new KeyValuePair<string, string>(key, value));
+                        }
+                    }
+                }
+                
+                Console.WriteLine($"Назва: {title}");
+                Console.WriteLine($"Ціна: {price} грн");
+                Console.WriteLine($"Зображення: {imageUrl}");
+                string brand = "";
+                foreach (var entry in tableData)
+                {
+                    Console.WriteLine($"{entry.Key}: {entry.Value}");
+                    if (entry.Key == "Бренд")
+                    {
+                        brand = entry.Value;
+                    }
+                }
+                
+                string[] split_title = title.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+                
+                Categories.Current_OverviewPart = new OverviewPart(title,"",brand,split_title[split_title.Length-1],"",imageUrl,price + " \u20B4",tableData);
+            }
+            
+            
+            catch (Exception e)
+            {
+
+                Console.WriteLine("Помилка зчитування деталі");
+
+            }
+            
+    }
+    
 }

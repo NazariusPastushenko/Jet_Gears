@@ -37,7 +37,7 @@ namespace Jet_Gears
             DataTable table = new DataTable();
 
             string querystring =
-                $"select id_user, login_user, password_user,Surname,Name,Shelves from register where login_user = '{loginUser}' and password_user = '{passUser}'";
+                $"select login_user, password_user,Name,Shelves from register where login_user = '{loginUser}' and password_user = '{passUser}'";
 
             SqlCommand command = new SqlCommand(querystring, users.getConnection());
             adapter.SelectCommand = command;

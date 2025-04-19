@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
 using Jet_Gears.Controls;
@@ -8,7 +10,9 @@ using Jet_Gears.Properties;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.IO;
+using System.Net;
 using System.Text;
+using Jet_Gears.DataBases;
 using Jet_Gears.Forms;
 
 namespace Jet_Gears
@@ -17,16 +21,18 @@ namespace Jet_Gears
     {
         private Animation slideAnimation;
         private Timer animationTimer;
+        private byte[] imageBytes {get; set;}
 
         public Advanced_Search()
         {
             InitializeComponent();
-
+            
             animationTimer = new Timer
             {
                 Interval = 16 // 60 FPS (~16 мс на кадр)
             };
             animationTimer.Tick += OnAnimationTick;
+            KeyPreview = true;
         }
 
         private void Advanced_Search_Load(object sender, EventArgs e)
@@ -51,15 +57,17 @@ namespace Jet_Gears
                 await Task.Delay(100); // Додатковий час для оновлення UI
 
                 
-                
+                await InitialSearchZvukAsync(Advanced_Search_TextBox.Text, "");
                 // Виконуємо пошук
-                await InitialSearchAsync(Advanced_Search_TextBox.Text, "");
-
-                // Показуємо картки
                 Show_Cards(0);
-                
-                // Закриваємо лоадінг-екран після завершення операцій
+                    
+                    
                 loadingForm.Close();
+
+                if (Categories.SearchGears.Count == 0) 
+                {
+                    MessageBox.Show("Деталі не знайдено", "Помилка", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                }
             }
         }
 
@@ -67,6 +75,12 @@ namespace Jet_Gears
         {
             // Ваш метод Initial_Search, який виконується асинхронно
             await Task.Run(() => InitialSearch.Initial_Search(searchText, additionalParam));
+        }
+        
+        private async Task InitialSearchZvukAsync(string searchText, string additionalParam)
+        {
+            // Ваш метод Initial_Search, який виконується асинхронно
+            await Task.Run(() => InitialSearch_AvtoZvuk.Initial_Search_Zvuk(searchText,""));
         }
 
         private void Create_Search_Card(string gearcode, string price, string description, Image image, string link)
@@ -82,9 +96,10 @@ namespace Jet_Gears
             card.MainTextSize = 15;
             card.RightTextSize = 15;
             card.DescriptionLabel = description;
-            card.RightBottomImage = Resources._3737369;
-            card.PriceLabel = "Ціна: " + price + "\u20b4";
-            card.RightLabel2Text = "";
+            card.RightBottomButtonImage = Resources._3737369;
+            card.PriceLabel = "Ціна: " + price;
+            card.RightLabel2Text = "Корзина: ";
+            card.RightBottomButtonSize = new Size(25, 25);
             latest_y_Search = latest_y_Search + 10 + card.Height;
             Controls.Add(card);
             if (image == null)
@@ -97,13 +112,37 @@ namespace Jet_Gears
             }
             card.LeftImageMouseEnter += Search_Card_LeftImageMouseEnter;
             card.LeftImageMouseLeave += Search_Card_LeftImageMouseLeave;
-            card.Click += Search_Card_Click;
+            card.BusketIcon_ImageClick += Search_Card_AddToCart;
+
+            if (link.Contains("zvuk"))
+            {
+                card.Click += Search_CardZvuk_Click;
+            }
+            else
+            {
+                card.Click += Search_Card_Click;
+            }
+        }
+
+        private void Search_Card_AddToCart(object sender, EventArgs e)
+        {
+            GearCard gearCard = sender as GearCard;
+            Part_Search_By_Code_Parse.PartZvuk_URL_Search(gearCard.link);
+            Ask_Amount_ToCart toCartForm = new Ask_Amount_ToCart();
+            toCartForm.StartPosition = FormStartPosition.CenterScreen;
+            toCartForm.Show();
         }
 
         private void Search_Card_Click(object sender, EventArgs e)
         {
             GearCard gearCard = sender as GearCard;
-            Search_Part_Overview overview_form = new Search_Part_Overview(Part_Search_By_Code_Parse.Part_URL_Search(gearCard.link));
+        }
+        
+        private void Search_CardZvuk_Click(object sender, EventArgs e)
+        {
+            GearCard gearCard = sender as GearCard;
+            Part_Search_By_Code_Parse.PartZvuk_URL_Search(gearCard.link);
+            Search_Part_Overview overview_form = new Search_Part_Overview();
 
             OpenChildFormWithAnimation(overview_form);
         }
@@ -254,6 +293,15 @@ namespace Jet_Gears
             else
             {
                 animationTimer.Stop();
+            }
+        }
+        
+
+        private void Advanced_Search_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Advance_Search_Button_Click(sender,e);
             }
         }
     }

@@ -63,7 +63,7 @@ public partial class Makers_Form : Form
     {
         button b = sender as button;
         Categories.ChoosenMaker = b.Text;
-        Categories.CurrentMainForm.OpenChildForm(new Models_Form(Categories.ChoosenMaker));
+        Categories.CurrentMainForm.OpenChildForm(new Models_Form(Categories.ChoosenMaker),false);
     }
 
     

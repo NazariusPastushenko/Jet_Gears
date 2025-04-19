@@ -123,8 +123,15 @@ namespace Jet_Gears.Forms
             }
             else
             {
-                OpenChildForm(new Makers_Form(),false);
+                OpenChildForm(new Search_ByCar_AutoZvuk(),false);
             }
+        }
+        
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Account_Form accountForm = new Account_Form();
+            accountForm.StartPosition = FormStartPosition.CenterScreen;
+            accountForm.Show();
         }
         
         private void Basket_Button_Click(object sender, EventArgs e)
@@ -149,6 +156,10 @@ namespace Jet_Gears.Forms
             OpenChildForm(new Shelf_Form());
         }
         
+        private void Assistant_Button_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new AI_Assistant_Chat(""),false);
+        }
         
         public void Get_Shelves_List(string user_login)
         {
@@ -190,7 +201,8 @@ namespace Jet_Gears.Forms
                 MessageBox.Show($"Помилка: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
-        
+
+
+       
     }
 }

@@ -38,9 +38,7 @@ namespace Jet_Gears
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.Registration_Name_Textbox = new System.Windows.Forms.TextBox();
-            this.Registration_Surname_Textbox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.Reg_Open_Eye = new System.Windows.Forms.Panel();
             this.Reg_CloseEye = new System.Windows.Forms.Panel();
             this.BackPanel = new System.Windows.Forms.Panel();
@@ -50,7 +48,7 @@ namespace Jet_Gears
             // 
             this.Registration_Password_Textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Registration_Password_Textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Registration_Password_Textbox.Location = new System.Drawing.Point(299, 243);
+            this.Registration_Password_Textbox.Location = new System.Drawing.Point(296, 180);
             this.Registration_Password_Textbox.Name = "Registration_Password_Textbox";
             this.Registration_Password_Textbox.Size = new System.Drawing.Size(253, 40);
             this.Registration_Password_Textbox.TabIndex = 22;
@@ -59,7 +57,7 @@ namespace Jet_Gears
             // 
             this.Registration_Login_Textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Registration_Login_Textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Registration_Login_Textbox.Location = new System.Drawing.Point(40, 243);
+            this.Registration_Login_Textbox.Location = new System.Drawing.Point(37, 180);
             this.Registration_Login_Textbox.Name = "Registration_Login_Textbox";
             this.Registration_Login_Textbox.Size = new System.Drawing.Size(253, 40);
             this.Registration_Login_Textbox.TabIndex = 21;
@@ -78,7 +76,7 @@ namespace Jet_Gears
             this.Registration_Button.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Registration_Button.Font = new System.Drawing.Font("Bahnschrift", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Registration_Button.ForeColor = System.Drawing.Color.White;
-            this.Registration_Button.Location = new System.Drawing.Point(0, 319);
+            this.Registration_Button.Location = new System.Drawing.Point(0, 242);
             this.Registration_Button.Name = "Registration_Button";
             this.Registration_Button.RippleColor = System.Drawing.Color.Black;
             this.Registration_Button.RoundingEnable = false;
@@ -95,7 +93,7 @@ namespace Jet_Gears
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Bahnschrift Condensed", 20.25F);
-            this.label3.Location = new System.Drawing.Point(392, 202);
+            this.label3.Location = new System.Drawing.Point(389, 139);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(78, 38);
             this.label3.TabIndex = 19;
@@ -104,7 +102,7 @@ namespace Jet_Gears
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Bahnschrift Condensed", 20.25F);
-            this.label2.Location = new System.Drawing.Point(135, 202);
+            this.label2.Location = new System.Drawing.Point(132, 139);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 38);
             this.label2.TabIndex = 18;
@@ -126,42 +124,24 @@ namespace Jet_Gears
             // 
             this.Registration_Name_Textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Registration_Name_Textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Registration_Name_Textbox.Location = new System.Drawing.Point(166, 143);
+            this.Registration_Name_Textbox.Location = new System.Drawing.Point(202, 85);
             this.Registration_Name_Textbox.Name = "Registration_Name_Textbox";
             this.Registration_Name_Textbox.Size = new System.Drawing.Size(359, 40);
-            this.Registration_Name_Textbox.TabIndex = 23;
-            // 
-            // Registration_Surname_Textbox
-            // 
-            this.Registration_Surname_Textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Registration_Surname_Textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Registration_Surname_Textbox.Location = new System.Drawing.Point(166, 85);
-            this.Registration_Surname_Textbox.Name = "Registration_Surname_Textbox";
-            this.Registration_Surname_Textbox.Size = new System.Drawing.Size(359, 40);
-            this.Registration_Surname_Textbox.TabIndex = 24;
+            this.Registration_Name_Textbox.TabIndex = 24;
             // 
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Bahnschrift Condensed", 20.25F);
-            this.label4.Location = new System.Drawing.Point(55, 87);
+            this.label4.Location = new System.Drawing.Point(37, 85);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(105, 38);
+            this.label4.Size = new System.Drawing.Size(159, 38);
             this.label4.TabIndex = 25;
-            this.label4.Text = "Прізвище";
-            // 
-            // label5
-            // 
-            this.label5.Font = new System.Drawing.Font("Bahnschrift Condensed", 20.25F);
-            this.label5.Location = new System.Drawing.Point(101, 145);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(45, 38);
-            this.label5.TabIndex = 26;
-            this.label5.Text = "Ім\'я";
+            this.label4.Text = "Назва магазину";
             // 
             // Reg_Open_Eye
             // 
             this.Reg_Open_Eye.BackgroundImage = global::Jet_Gears.Properties.Resources.Open_Eye;
-            this.Reg_Open_Eye.Location = new System.Drawing.Point(558, 243);
+            this.Reg_Open_Eye.Location = new System.Drawing.Point(555, 180);
             this.Reg_Open_Eye.Name = "Reg_Open_Eye";
             this.Reg_Open_Eye.Size = new System.Drawing.Size(40, 40);
             this.Reg_Open_Eye.TabIndex = 28;
@@ -170,7 +150,7 @@ namespace Jet_Gears
             // Reg_CloseEye
             // 
             this.Reg_CloseEye.BackgroundImage = global::Jet_Gears.Properties.Resources.Closed_Eye;
-            this.Reg_CloseEye.Location = new System.Drawing.Point(558, 243);
+            this.Reg_CloseEye.Location = new System.Drawing.Point(555, 180);
             this.Reg_CloseEye.Name = "Reg_CloseEye";
             this.Reg_CloseEye.Size = new System.Drawing.Size(40, 40);
             this.Reg_CloseEye.TabIndex = 29;
@@ -191,13 +171,11 @@ namespace Jet_Gears
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(615, 374);
+            this.ClientSize = new System.Drawing.Size(615, 297);
             this.Controls.Add(this.BackPanel);
             this.Controls.Add(this.Reg_Open_Eye);
             this.Controls.Add(this.Reg_CloseEye);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.Registration_Surname_Textbox);
             this.Controls.Add(this.Registration_Name_Textbox);
             this.Controls.Add(this.Registration_Password_Textbox);
             this.Controls.Add(this.Registration_Login_Textbox);
@@ -221,9 +199,7 @@ namespace Jet_Gears
         private System.Windows.Forms.Panel Reg_Open_Eye;
 
         private System.Windows.Forms.TextBox Registration_Name_Textbox;
-        private System.Windows.Forms.TextBox Registration_Surname_Textbox;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
 
         private System.Windows.Forms.TextBox Registration_Password_Textbox;
         private System.Windows.Forms.TextBox Registration_Login_Textbox;

@@ -191,6 +191,9 @@
         <Compile Include="Categories.cs" />
         <Compile Include="Controls\BusketCard.cs" />
         <Compile Include="Controls\button.cs" />
+        <Compile Include="Controls\Chat_Message.cs">
+          <SubType>Component</SubType>
+        </Compile>
         <Compile Include="Controls\EgoldsGoogleTextBox.cs" />
         <Compile Include="Controls\Gear_Card.cs" />
         <Compile Include="Controls\Model_Card.cs">
@@ -200,12 +203,31 @@
           <SubType>Component</SubType>
         </Compile>
         <Compile Include="DataBases\DataBase.cs" />
+        <Compile Include="DataBases\GeminiClient.cs" />
         <Compile Include="Drawer.cs" />
+        <Compile Include="Forms\Account_Form.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Forms\Account_Form.Designer.cs">
+          <DependentUpon>Account_Form.cs</DependentUpon>
+        </Compile>
         <Compile Include="Forms\Advanced_Search.cs">
           <SubType>Form</SubType>
         </Compile>
         <Compile Include="Forms\Advanced_Search.Designer.cs">
           <DependentUpon>Advanced_Search.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Forms\AI_Assistant_Chat.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Forms\AI_Assistant_Chat.Designer.cs">
+          <DependentUpon>AI_Assistant_Chat.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Forms\Ask_Amount_ToCart.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Forms\Ask_Amount_ToCart.Designer.cs">
+          <DependentUpon>Ask_Amount_ToCart.cs</DependentUpon>
         </Compile>
         <Compile Include="Forms\Ask_ShelfNum_Form.cs">
           <SubType>Form</SubType>
@@ -285,6 +307,12 @@
         <Compile Include="Forms\Registration_Form.Designer.cs">
           <DependentUpon>Registration_Form.cs</DependentUpon>
         </Compile>
+        <Compile Include="Forms\Search_ByCar_AutoZvuk.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Forms\Search_ByCar_AutoZvuk.Designer.cs">
+          <DependentUpon>Search_ByCar_AutoZvuk.cs</DependentUpon>
+        </Compile>
         <Compile Include="Forms\Search_Part_Overview.cs">
           <SubType>Form</SubType>
         </Compile>
@@ -303,12 +331,21 @@
         <Compile Include="Forms\Shelf_Form.Designer.cs">
           <DependentUpon>Shelf_Form.cs</DependentUpon>
         </Compile>
+        <Compile Include="Forms\Shelf_Part_Overview.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Forms\Shelf_Part_Overview.Designer.cs">
+          <DependentUpon>Shelf_Part_Overview.cs</DependentUpon>
+        </Compile>
         <Compile Include="Forms\Supply_Form.cs">
           <SubType>Form</SubType>
         </Compile>
         <Compile Include="Forms\Supply_Form.Designer.cs">
           <DependentUpon>Supply_Form.cs</DependentUpon>
         </Compile>
+        <Compile Include="Objects\AutoZvuk_Maker.cs" />
+        <Compile Include="Objects\AutoZvuk_Model.cs" />
+        <Compile Include="Objects\AvtoZvuk_Node.cs" />
         <Compile Include="Objects\Car.cs" />
         <Compile Include="Objects\Car_Model.cs" />
         <Compile Include="Objects\Car_Node.cs" />
@@ -319,18 +356,31 @@
         <Compile Include="Objects\RootMaker.cs" />
         <Compile Include="Objects\Search_Gear.cs" />
         <Compile Include="Objects\Shelf_Gear.cs" />
-        <Compile Include="Parser\InitialSeach.cs" />
+        <Compile Include="Parser\InitialSeach_OnlineCarParts.cs" />
+        <Compile Include="Parser\InitialSearch_AvtoZvuk.cs" />
         <Compile Include="Parser\Part_Search_By_Code_Parse.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <EmbeddedResource Include="Controls\Chat_Message.resx">
+          <DependentUpon>Chat_Message.cs</DependentUpon>
+        </EmbeddedResource>
         <EmbeddedResource Include="Controls\Model_Card.resx">
           <DependentUpon>Model_Card.cs</DependentUpon>
         </EmbeddedResource>
         <EmbeddedResource Include="Controls\Shelf.resx">
           <DependentUpon>Shelf.cs</DependentUpon>
         </EmbeddedResource>
+        <EmbeddedResource Include="Forms\Account_Form.resx">
+          <DependentUpon>Account_Form.cs</DependentUpon>
+        </EmbeddedResource>
         <EmbeddedResource Include="Forms\Advanced_Search.resx">
           <DependentUpon>Advanced_Search.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Forms\AI_Assistant_Chat.resx">
+          <DependentUpon>AI_Assistant_Chat.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Forms\Ask_Amount_ToCart.resx">
+          <DependentUpon>Ask_Amount_ToCart.cs</DependentUpon>
         </EmbeddedResource>
         <EmbeddedResource Include="Forms\Ask_ShelfNum_Form.resx">
           <DependentUpon>Ask_ShelfNum_Form.cs</DependentUpon>
@@ -368,6 +418,9 @@
         <EmbeddedResource Include="Forms\Registration_Form.resx">
           <DependentUpon>Registration_Form.cs</DependentUpon>
         </EmbeddedResource>
+        <EmbeddedResource Include="Forms\Search_ByCar_AutoZvuk.resx">
+          <DependentUpon>Search_ByCar_AutoZvuk.cs</DependentUpon>
+        </EmbeddedResource>
         <EmbeddedResource Include="Forms\Search_Part_Overview.resx">
           <DependentUpon>Search_Part_Overview.cs</DependentUpon>
         </EmbeddedResource>
@@ -376,6 +429,9 @@
         </EmbeddedResource>
         <EmbeddedResource Include="Forms\Shelf_Form.resx">
           <DependentUpon>Shelf_Form.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Forms\Shelf_Part_Overview.resx">
+          <DependentUpon>Shelf_Part_Overview.cs</DependentUpon>
         </EmbeddedResource>
         <EmbeddedResource Include="Forms\Supply_Form.resx">
           <DependentUpon>Supply_Form.cs</DependentUpon>
@@ -416,13 +472,16 @@
       <Content Include="Resources\Loading_Gears.gif" />
       <Content Include="Resources\logo.png" />
       <Content Include="Resources\logo1.png" />
+      <Content Include="Resources\Mechanic.png" />
       <Content Include="Resources\Open_Eye.png" />
       <Content Include="Resources\Part_Icon.png" />
       <Content Include="Resources\Picture_Icon.png" />
       <Content Include="Resources\Right_Arrow.png" />
       <Content Include="Resources\Search_Button.png" />
+      <Content Include="Resources\Send_Button.png" />
       <Content Include="Resources\Shelf_Button.png" />
       <Content Include="Resources\star.png" />
+      <Content Include="Resources\User_Icon.png" />
       <Content Include="Resources\_0a41b1c83a9f2.png" />
       <Content Include="Resources\_1167055.png" />
       <Content Include="Resources\_2736918.png" />

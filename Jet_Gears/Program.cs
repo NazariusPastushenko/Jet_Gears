@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Jet_Gears
@@ -14,6 +15,7 @@ namespace Jet_Gears
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Enter_Form());
+            Console.OutputEncoding = Encoding.UTF8;
         }
         
         public static void Ask_Closing(object sender, FormClosingEventArgs e)

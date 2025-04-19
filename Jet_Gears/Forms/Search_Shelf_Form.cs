@@ -26,7 +26,7 @@ namespace Jet_Gears.Forms
 
         
 
-        private void Create_Card(int id,string gearcode, string count_of, string maker, string price, string description, Image image)
+        private void Create_Card(string gearcode, string count_of, string maker, string price, string description, Image image)
         {
             GearCard card = new GearCard();
             card.BorderColor = Color.Black;
@@ -35,7 +35,6 @@ namespace Jet_Gears.Forms
             card.Size = new Size(1170, 60);
             card.NameLabel = gearcode + "    " + maker;
             card.DescriptionLabel = description;
-            card.RightBottomImage = Resources._3737369;
             card.MainTextSize = 15;
             card.RightTextSize = 15;
             card.PriceLabel = "Ціна: " + price;
@@ -51,7 +50,7 @@ namespace Jet_Gears.Forms
                 card.LeftImage = image;
             }
 
-            card.Card_object = new Gear(id, gearcode, int.Parse(count_of), maker, int.Parse(price), description, image);
+            card.Card_object = new Gear( gearcode, int.Parse(count_of), maker, int.Parse(price), description, image);
             card.LeftImageMouseEnter += GearCard_LeftImageMouseEnter;
             card.LeftImageMouseLeave += GearCard_LeftImageMouseLeave;
             card.BusketIcon_ImageClick += BusketIcon_Click;
@@ -106,46 +105,54 @@ namespace Jet_Gears.Forms
             Delete_Cards();
             Categories.ShelfGears.Clear();
 
-            SqlDataAdapter adapter = new SqlDataAdapter();
-            DataTable table = new DataTable();
-            var token = Categories.CurrUserToken;
-            string querystring = $"select id,gear_code,count_of,maker,price,description,picture,user_Token,Shelf_Placement from Gears where user_Token = '{Categories.CurrUserToken}' and Shelf_Placement = '{tag}'";
-   
-
-
-            SqlCommand command = new SqlCommand(querystring, Gears_Base.getConnection());
-            adapter.SelectCommand = command;
-            adapter.Fill(table);
-            if (table.Rows.Count == 0) {
-                MessageBox.Show($"Полиця |{tag}| пуста ", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-                
-            };
             
-            foreach (DataRow row in table.Rows)
-            {
-                var id = row["id"].ToString();
-                var gearcode = row["gear_code"].ToString();
-                var count_of = row["count_of"].ToString();
-                var maker = row["maker"].ToString();
-                var price = row["price"].ToString();
-                var description = row["description"].ToString();
-                    
-                byte[] imageData = row["picture"] as byte[];
-                if (imageData != null)
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                DataTable table = new DataTable();
+                var token = Categories.CurrUserToken;
+                string querystring =
+                    $"select gear_code,count_of,maker,price,picture,user_Token,Shelf_Placement from Gears where user_Token = '{Categories.CurrUserToken}' and Shelf_Placement = '{tag}'";
+
+
+
+                SqlCommand command = new SqlCommand(querystring, Gears_Base.getConnection());
+                adapter.SelectCommand = command;
+                adapter.Fill(table);
+                if (table.Rows.Count == 0)
                 {
-                    using (MemoryStream ms = new MemoryStream(imageData))
-                    {
-                        Image image = Image.FromStream(ms);
-                        Categories.ShelfGears.Add(new Shelf_Gear(int.Parse(id),gearcode, count_of, maker, price, description, image));
-                    }
-                }
-                else
-                {
-                    Categories.ShelfGears.Add(new Shelf_Gear(int.Parse(id),gearcode, count_of, maker, price, description, null));
+                    MessageBox.Show($"Полиця |{tag}| пуста ", "Помилка", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                    return;
+
                 }
 
-            }
+                ;
+
+                foreach (DataRow row in table.Rows)
+                {
+                    var gearcode = row["gear_code"].ToString();
+                    var count_of = row["count_of"].ToString();
+                    var maker = row["maker"].ToString();
+                    var price = row["price"].ToString();
+                    string description = null ;
+
+                    byte[] imageData = row["picture"] as byte[];
+                    if (imageData != null)
+                    {
+                        using (MemoryStream ms = new MemoryStream(imageData))
+                        {
+                            Image image = Image.FromStream(ms);
+                            Categories.ShelfGears.Add(new Shelf_Gear( gearcode, count_of, maker, price,
+                                description, image));
+                        }
+                    }
+                    else
+                    {
+                        Categories.ShelfGears.Add(new Shelf_Gear( gearcode, count_of, maker, price,
+                            description, null));
+                    }
+
+                }
+
             Show_Cards(0);
         }
 
@@ -173,7 +180,7 @@ namespace Jet_Gears.Forms
                 {
                     return;
                 }
-                Create_Card(item.id,item.gearcode,item.count_of,item.maker,item.price,item.description,item.image);
+                Create_Card(item.gearcode,item.count_of,item.maker,item.price,item.description,item.image);
             }
         }
         

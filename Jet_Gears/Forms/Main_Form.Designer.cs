@@ -29,6 +29,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -39,6 +40,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.button5 = new System.Windows.Forms.Button();
+            this.Assistant_Button = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.panel10 = new System.Windows.Forms.Panel();
@@ -180,6 +183,8 @@
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
+            this.panel8.Controls.Add(this.button5);
+            this.panel8.Controls.Add(this.Assistant_Button);
             this.panel8.Controls.Add(this.button4);
             this.panel8.Controls.Add(this.button3);
             this.panel8.Controls.Add(this.panel10);
@@ -192,21 +197,61 @@
             this.panel8.Size = new System.Drawing.Size(1197, 70);
             this.panel8.TabIndex = 1;
             // 
+            // button5
+            // 
+            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
+            this.button5.BackgroundImage = global::Jet_Gears.Properties.Resources.User_Icon;
+            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button5.ForeColor = System.Drawing.Color.White;
+            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button5.Location = new System.Drawing.Point(3, 6);
+            this.button5.Name = "button5";
+            this.button5.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button5.Size = new System.Drawing.Size(70, 61);
+            this.button5.TabIndex = 10;
+            this.button5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // Assistant_Button
+            // 
+            this.Assistant_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.Assistant_Button.BackColor = System.Drawing.Color.Transparent;
+            this.Assistant_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Assistant_Button.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
+            this.Assistant_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Assistant_Button.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Assistant_Button.ForeColor = System.Drawing.Color.White;
+            this.Assistant_Button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Assistant_Button.Location = new System.Drawing.Point(553, 11);
+            this.Assistant_Button.Name = "Assistant_Button";
+            this.Assistant_Button.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Assistant_Button.Size = new System.Drawing.Size(130, 42);
+            this.Assistant_Button.TabIndex = 9;
+            this.Assistant_Button.Text = "Помічник";
+            this.Assistant_Button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.Assistant_Button.UseVisualStyleBackColor = true;
+            this.Assistant_Button.Click += new System.EventHandler(this.Assistant_Button_Click);
+            // 
             // button4
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.BackColor = System.Drawing.Color.Silver;
-            this.button4.BackgroundImage = global::Jet_Gears.Properties.Resources._2736918;
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
+            this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
             this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button4.ForeColor = System.Drawing.Color.White;
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(500, 6);
+            this.button4.Location = new System.Drawing.Point(432, -7);
             this.button4.Name = "button4";
             this.button4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button4.Size = new System.Drawing.Size(112, 53);
+            this.button4.Size = new System.Drawing.Size(115, 82);
             this.button4.TabIndex = 8;
             this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button4.UseVisualStyleBackColor = false;
@@ -218,7 +263,7 @@
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button3.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button3.ForeColor = System.Drawing.Color.White;
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button3.Location = new System.Drawing.Point(847, 3);
@@ -236,7 +281,7 @@
             this.panel10.BackColor = System.Drawing.Color.Transparent;
             this.panel10.BackgroundImage = global::Jet_Gears.Properties.Resources.logo;
             this.panel10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel10.Location = new System.Drawing.Point(70, 0);
+            this.panel10.Location = new System.Drawing.Point(79, 0);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(244, 68);
             this.panel10.TabIndex = 5;
@@ -248,13 +293,13 @@
             this.Search_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Search_Button.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
             this.Search_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Search_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Search_Button.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Search_Button.ForeColor = System.Drawing.Color.White;
             this.Search_Button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Search_Button.Location = new System.Drawing.Point(318, 11);
+            this.Search_Button.Location = new System.Drawing.Point(320, 12);
             this.Search_Button.Name = "Search_Button";
             this.Search_Button.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Search_Button.Size = new System.Drawing.Size(163, 42);
+            this.Search_Button.Size = new System.Drawing.Size(124, 42);
             this.Search_Button.TabIndex = 2;
             this.Search_Button.Text = "Пошук";
             this.Search_Button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -267,7 +312,7 @@
             this.Supply_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Supply_Button.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
             this.Supply_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Supply_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Supply_Button.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Supply_Button.ForeColor = System.Drawing.Color.White;
             this.Supply_Button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Supply_Button.Location = new System.Drawing.Point(678, 3);
@@ -286,7 +331,7 @@
             this.Basket_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Basket_Button.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
             this.Basket_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Basket_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Basket_Button.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Basket_Button.ForeColor = System.Drawing.Color.White;
             this.Basket_Button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Basket_Button.Location = new System.Drawing.Point(1016, 11);
@@ -334,6 +379,10 @@
             this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Button button5;
+
+        private System.Windows.Forms.Button Assistant_Button;
 
         private System.Windows.Forms.Button button4;
 

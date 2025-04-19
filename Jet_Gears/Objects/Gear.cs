@@ -14,7 +14,7 @@ namespace Jet_Gears.Objects
         public Image picture { get; set; }
 
 
-        public Gear(int id, string gearCode, int countOf, string maker, int price, string description, Image picture)
+        public Gear(string gearCode, int countOf, string maker, int price, string description, Image picture)
         {
             this.id = id;
             gear_code = gearCode;

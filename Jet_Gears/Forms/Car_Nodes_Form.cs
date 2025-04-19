@@ -142,7 +142,7 @@ public partial class Car_Nodes_Form : Form
         {
             if (node.Name == b.Name)
             {
-                OpenChildFormWithAnimation(new PartsFromNode_Form(node.Parts));
+                //OpenChildFormWithAnimation(new PartsFromNode_Form(node.Parts));
                 break;
             }
         }

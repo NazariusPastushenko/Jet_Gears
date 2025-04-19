@@ -19,21 +19,24 @@ public partial class Search_Part_Overview : Form
     private Image part_img {get; set;}
     private OverviewPart Current_Part {get; set;}
     private byte[] imageBytes {get; set;}
-    public Search_Part_Overview(OverviewPart part)
+    public Search_Part_Overview()
     {
+        Current_Part = Categories.Current_OverviewPart;
         InitializeComponent();
-        Current_Part = part;
-        Title_Label.Text =  part.Title;
-        Description_Label.Text = part.Description;
-        Price_Label.Text = part.Price + "\u20b4";
-        Part_PictureBox.ImageLocation = part.Part_PictureURL;
-        Part_PictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-        Brand_PictureBox.ImageLocation = part.Brand_PictureURL;
-        Brand_PictureBox.SizeMode = PictureBoxSizeMode.Zoom;
 
-        foreach (var Spec in part.Table)
+        Title_Label.Text =  Current_Part.Title;
+        Description_Label.Text = Current_Part.Description;
+        if (String.IsNullOrEmpty(Current_Part.Description))
         {
-            Specs_Label.Text += Spec.Key + Spec.Value + "\n";
+            Specs_Label.Location = Description_Label.Location;
+        }
+        Price_Label.Text += Current_Part.Price;
+        Part_PictureBox.ImageLocation = Current_Part.Part_PictureURL;
+        Part_PictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+        
+        foreach (var Spec in Current_Part.Table)
+        {
+            Specs_Label.Text += Spec.Key + "  " + Spec.Value + "\n";
         }
 
     }
@@ -54,12 +57,18 @@ public partial class Search_Part_Overview : Form
         try
     {
         DataBase users = new DataBase();
-        
+
+        string description = "";
+        foreach (var VARIABLE in Current_Part.Table)
+        {
+            description += $"{VARIABLE.Key}: {VARIABLE.Value}\n";
+        }
         // Отримання значень з форми
         string gear_code = Current_Part.Article;
         string maker = Current_Part.Manufacturer;
-        decimal price = decimal.Parse(Current_Part.Price);
-        string description = Current_Part.Description;
+        string price = Current_Part.Price;
+        price = price.Remove(price.Length-1);
+        
         string token = Categories.CurrUserToken;
 
         // Запит з параметрами
@@ -69,6 +78,13 @@ public partial class Search_Part_Overview : Form
 
         using (SqlCommand command = new SqlCommand(querystring, users.getConnection()))
         {
+            
+            
+            
+            
+            if(string.IsNullOrEmpty(gear_code))gear_code = "0";
+            if(string.IsNullOrEmpty(maker))maker = "0";
+            if(string.IsNullOrEmpty(description))description = "0";
             // Додавання параметрів
             command.Parameters.AddWithValue("@GearCode", gear_code);
             command.Parameters.AddWithValue("@CountOf", count_of);
@@ -78,9 +94,9 @@ public partial class Search_Part_Overview : Form
             command.Parameters.AddWithValue("@UserToken", token);
             command.Parameters.AddWithValue("@Shelf_Place", shelf_place);
 
-            string someUrl = Current_Part.Part_PictureURL; 
+            string ImageUrl = Current_Part.Part_PictureURL; 
             using (var webClient = new WebClient()) { 
-                 imageBytes = webClient.DownloadData(someUrl);
+                 imageBytes = webClient.DownloadData(ImageUrl);
             }
             
             // Перевірка наявності зображення
@@ -92,6 +108,22 @@ public partial class Search_Part_Overview : Form
             {
                 command.Parameters.Add("@ImageData", SqlDbType.VarBinary).Value = imageBytes; // Якщо зображення є
             }
+            
+            string BrandUrl = Current_Part.Part_PictureURL; 
+            using (var webClient = new WebClient()) { 
+                imageBytes = webClient.DownloadData(BrandUrl);
+            }
+            
+            if (imageBytes == null || imageBytes.Length == 0)
+            {
+                command.Parameters.Add("@BrandImageData", SqlDbType.VarBinary).Value = DBNull.Value; // Якщо зображення немає
+            }
+            else
+            {
+                command.Parameters.Add("@BrandImageData", SqlDbType.VarBinary).Value = imageBytes; // Якщо зображення є
+            }
+
+            
 
             // Відкриття підключення та виконання запиту
             users.openConnection();
@@ -109,5 +141,10 @@ public partial class Search_Part_Overview : Form
     {
         MessageBox.Show($"Помилка: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
     }
+    }
+
+    private void Ask_Ai_Button_Click(object sender, EventArgs e)
+    {
+        Categories.CurrentMainForm.OpenChildForm(new AI_Assistant_Chat($"Розкажи мені про цю деталь {Current_Part.Title}, яку функцію вона виконує, для чого вона в автомобілі та куди встановлюється"));
     }
 }

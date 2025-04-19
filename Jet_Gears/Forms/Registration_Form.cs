@@ -38,7 +38,6 @@ namespace Jet_Gears
             Registration_Password_Textbox.PasswordChar = '*';
             Reg_Open_Eye.Visible = false;
             Registration_Name_Textbox.MaxLength = 50;
-            Registration_Surname_Textbox.MaxLength = 50;
             Registration_Login_Textbox.MaxLength = 50;
             Registration_Password_Textbox.MaxLength = 50;
         }
@@ -49,10 +48,10 @@ namespace Jet_Gears
             
             var loginUser = Registration_Login_Textbox.Text;
             var passUser = Registration_Password_Textbox.Text;
-            var SurnameUser = Registration_Surname_Textbox.Text;
             var nameUser = Registration_Name_Textbox.Text;
+            var shelves = "";
 
-            if ( loginUser == "" || passUser == "" || SurnameUser == "" || nameUser == "")
+            if ( loginUser == "" || passUser == "" || nameUser == "")
             {
                 MessageBox.Show("Схоже ви ввели не всі дані", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -61,10 +60,9 @@ namespace Jet_Gears
             SqlDataAdapter adapter = new SqlDataAdapter();
 
             DataTable table = new DataTable();
-            var token = Categories.CurrUserToken;
 
             string querystring =
-                $"INSERT INTO register (login_user, password_user, Surname, Name,Token) VALUES ('{loginUser}','{passUser}','{SurnameUser}','{nameUser}','{token}')";
+                $"INSERT INTO register (login_user, password_user, Name,Shelves) VALUES ('{loginUser}','{passUser}','{nameUser}','{shelves}')";
             
             SqlCommand command = new SqlCommand(querystring, users.getConnection());
             users.openConnection();
@@ -72,6 +70,7 @@ namespace Jet_Gears
             {
                 MessageBox.Show("Аккаунт успішно створений", "Успішно", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Categories.CurrUserToken = BCrypt.Net.BCrypt.HashPassword(loginUser);
+                Categories.CurrUserLogin = loginUser;
             }
             Hide();
             Forms.Main_Form main = new Forms.Main_Form();
@@ -98,5 +97,7 @@ namespace Jet_Gears
             Enter_Form enter = new Enter_Form();
             enter.Show();
         }
+
+
     }
 }
