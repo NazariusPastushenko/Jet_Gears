@@ -14,6 +14,7 @@ public partial class Ask_Amount_ToCart : Form
     public Ask_Amount_ToCart()
     {
         InitializeComponent();
+        textBox1.Text = Categories.Current_OverviewPart.Price;
     }
 
     
@@ -22,6 +23,7 @@ public partial class Ask_Amount_ToCart : Form
     {
         Categories.Current_OverviewPart.Price = textBox1.Text;
         Add_Part_to_DataBase_Cart((int)numericUpDown1.Value);
+        Close();
     }
     
         public void Add_Part_to_DataBase_Cart(int count_of)
@@ -36,25 +38,23 @@ public partial class Ask_Amount_ToCart : Form
             description += $"{VARIABLE.Key}: {VARIABLE.Value}\n";
         }
         // Отримання значень з форми
-        string gear_code = Categories.Current_OverviewPart.Article;
+        string gearCode = Categories.Current_OverviewPart.Title;
         string maker = Categories.Current_OverviewPart.Manufacturer;
         string price = Categories.Current_OverviewPart.Price;
-        price = price.Remove(price.Length-1);
-        
         string token = Categories.CurrUserToken;
 
         // Запит з параметрами
         string querystring = @"
-            INSERT INTO Gears (gear_code, count_of, maker, price, description, picture, user_Token,Shelf_Placement,Cart) 
-            VALUES (@GearCode, @CountOf, @Maker, @Price, @Description, @ImageData, @UserToken,@Shelf_Place, @Cart)";
+            INSERT INTO Gears (gear_code, count_of, maker, price, description, picture, user_Token,Shelf_Placement,Cart,Checked) 
+            VALUES (@GearCode, @CountOf, @Maker, @Price, @Description, @ImageData, @UserToken,@Shelf_Place, @Cart, @Checked)";
 
         using (SqlCommand command = new SqlCommand(querystring, users.getConnection()))
         {
-            if(string.IsNullOrEmpty(gear_code))gear_code = "0";
+            if(string.IsNullOrEmpty(gearCode))gearCode = "0";
             if(string.IsNullOrEmpty(maker))maker = "0";
             if(string.IsNullOrEmpty(description))description = "0";
             // Додавання параметрів
-            command.Parameters.AddWithValue("@GearCode", gear_code);
+            command.Parameters.AddWithValue("@GearCode", gearCode);
             command.Parameters.AddWithValue("@CountOf", count_of);
             command.Parameters.AddWithValue("@Maker", maker);
             command.Parameters.AddWithValue("@Price", price);
@@ -62,6 +62,7 @@ public partial class Ask_Amount_ToCart : Form
             command.Parameters.AddWithValue("@UserToken", token);
             command.Parameters.AddWithValue("@Shelf_Place", "");
             command.Parameters.AddWithValue("@Cart", 1);
+            command.Parameters.AddWithValue("@Checked", 0);
 
             string ImageUrl = Categories.Current_OverviewPart.Part_PictureURL; 
             using (var webClient = new WebClient()) { 
@@ -99,5 +100,9 @@ public partial class Ask_Amount_ToCart : Form
     }
     }
 
-   
+
+    private void button2_Click(object sender, EventArgs e)
+    {
+        Close();
+    }
 }

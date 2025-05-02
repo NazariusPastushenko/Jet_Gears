@@ -105,7 +105,7 @@ public partial class Search_ByCar_AutoZvuk : Form
             b.BackColor = Color.FromArgb(0, 36, 0);
             b.ForeColor = Color.Azure;
             b.Font = new Font("Bahnschrift SemiBold SemiConden", 15, FontStyle.Bold);
-            b.Size = new Size(387, 120);
+            b.Size = new Size(385, 120);
             Buttons_Panel.Controls.Add(b);
             b.Click += Get_Models;
             b.Show();

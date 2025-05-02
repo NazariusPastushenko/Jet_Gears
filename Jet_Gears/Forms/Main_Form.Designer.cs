@@ -50,10 +50,14 @@
             this.Basket_Button = new System.Windows.Forms.Button();
             this.panelChildForm = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.Menu_Panel = new System.Windows.Forms.Panel();
+            this.HideButton = new System.Windows.Forms.Button();
+            this.CloseButton = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.Menu_Panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -191,10 +195,9 @@
             this.panel8.Controls.Add(this.Search_Button);
             this.panel8.Controls.Add(this.Supply_Button);
             this.panel8.Controls.Add(this.Basket_Button);
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel8.Location = new System.Drawing.Point(0, 0);
+            this.panel8.Location = new System.Drawing.Point(0, 26);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(1197, 70);
+            this.panel8.Size = new System.Drawing.Size(1197, 73);
             this.panel8.TabIndex = 1;
             // 
             // button5
@@ -208,7 +211,7 @@
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button5.ForeColor = System.Drawing.Color.White;
             this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(3, 6);
+            this.button5.Location = new System.Drawing.Point(3, 7);
             this.button5.Name = "button5";
             this.button5.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.button5.Size = new System.Drawing.Size(70, 61);
@@ -220,6 +223,7 @@
             // Assistant_Button
             // 
             this.Assistant_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.Assistant_Button.AutoSize = true;
             this.Assistant_Button.BackColor = System.Drawing.Color.Transparent;
             this.Assistant_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Assistant_Button.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
@@ -227,7 +231,7 @@
             this.Assistant_Button.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Assistant_Button.ForeColor = System.Drawing.Color.White;
             this.Assistant_Button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Assistant_Button.Location = new System.Drawing.Point(553, 11);
+            this.Assistant_Button.Location = new System.Drawing.Point(553, 12);
             this.Assistant_Button.Name = "Assistant_Button";
             this.Assistant_Button.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Assistant_Button.Size = new System.Drawing.Size(130, 42);
@@ -240,6 +244,7 @@
             // button4
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.button4.AutoSize = true;
             this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
             this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
             this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
@@ -248,7 +253,7 @@
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button4.ForeColor = System.Drawing.Color.White;
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(432, -7);
+            this.button4.Location = new System.Drawing.Point(432, -6);
             this.button4.Name = "button4";
             this.button4.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.button4.Size = new System.Drawing.Size(115, 82);
@@ -259,6 +264,7 @@
             // 
             // button3
             // 
+            this.button3.AutoSize = true;
             this.button3.BackColor = System.Drawing.Color.Transparent;
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
@@ -266,10 +272,10 @@
             this.button3.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button3.ForeColor = System.Drawing.Color.White;
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(847, 3);
+            this.button3.Location = new System.Drawing.Point(876, 4);
             this.button3.Name = "button3";
             this.button3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button3.Size = new System.Drawing.Size(163, 59);
+            this.button3.Size = new System.Drawing.Size(134, 59);
             this.button3.TabIndex = 7;
             this.button3.Text = "Полиці";
             this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -289,6 +295,7 @@
             // Search_Button
             // 
             this.Search_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.Search_Button.AutoSize = true;
             this.Search_Button.BackColor = System.Drawing.Color.Transparent;
             this.Search_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Search_Button.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
@@ -296,7 +303,7 @@
             this.Search_Button.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Search_Button.ForeColor = System.Drawing.Color.White;
             this.Search_Button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Search_Button.Location = new System.Drawing.Point(320, 12);
+            this.Search_Button.Location = new System.Drawing.Point(320, 13);
             this.Search_Button.Name = "Search_Button";
             this.Search_Button.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Search_Button.Size = new System.Drawing.Size(124, 42);
@@ -308,6 +315,7 @@
             // 
             // Supply_Button
             // 
+            this.Supply_Button.AutoSize = true;
             this.Supply_Button.BackColor = System.Drawing.Color.Transparent;
             this.Supply_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Supply_Button.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
@@ -318,7 +326,7 @@
             this.Supply_Button.Location = new System.Drawing.Point(678, 3);
             this.Supply_Button.Name = "Supply_Button";
             this.Supply_Button.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Supply_Button.Size = new System.Drawing.Size(163, 59);
+            this.Supply_Button.Size = new System.Drawing.Size(192, 59);
             this.Supply_Button.TabIndex = 4;
             this.Supply_Button.Text = "Поповнення товару";
             this.Supply_Button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -327,6 +335,7 @@
             // 
             // Basket_Button
             // 
+            this.Basket_Button.AutoSize = true;
             this.Basket_Button.BackColor = System.Drawing.Color.Transparent;
             this.Basket_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Basket_Button.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
@@ -346,39 +355,109 @@
             // 
             // panelChildForm
             // 
+            this.panelChildForm.AutoSize = true;
             this.panelChildForm.BackColor = System.Drawing.Color.Transparent;
             this.panelChildForm.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.panelChildForm.Location = new System.Drawing.Point(0, 70);
+            this.panelChildForm.Location = new System.Drawing.Point(0, 98);
             this.panelChildForm.Name = "panelChildForm";
-            this.panelChildForm.Size = new System.Drawing.Size(1200, 600);
+            this.panelChildForm.Size = new System.Drawing.Size(1212, 599);
             this.panelChildForm.TabIndex = 3;
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel5.Controls.Add(this.Menu_Panel);
             this.panel5.Controls.Add(this.panelChildForm);
             this.panel5.Controls.Add(this.panel8);
-            this.panel5.Location = new System.Drawing.Point(-3, 0);
+            this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1197, 673);
+            this.panel5.Size = new System.Drawing.Size(1197, 697);
             this.panel5.TabIndex = 0;
+            // 
+            // Menu_Panel
+            // 
+            this.Menu_Panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(59)))), ((int)(((byte)(9)))));
+            this.Menu_Panel.Controls.Add(this.HideButton);
+            this.Menu_Panel.Controls.Add(this.CloseButton);
+            this.Menu_Panel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Menu_Panel.Location = new System.Drawing.Point(0, 0);
+            this.Menu_Panel.Name = "Menu_Panel";
+            this.Menu_Panel.Size = new System.Drawing.Size(1197, 27);
+            this.Menu_Panel.TabIndex = 11;
+            this.Menu_Panel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Menu_Panel_MouseDown);
+            // 
+            // HideButton
+            // 
+            this.HideButton.AutoSize = true;
+            this.HideButton.BackColor = System.Drawing.Color.Transparent;
+            this.HideButton.BackgroundImage = global::Jet_Gears.Properties.Resources._133;
+            this.HideButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.HideButton.Dock = System.Windows.Forms.DockStyle.Right;
+            this.HideButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
+            this.HideButton.FlatAppearance.BorderSize = 0;
+            this.HideButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.HideButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.HideButton.ForeColor = System.Drawing.Color.White;
+            this.HideButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.HideButton.Location = new System.Drawing.Point(1075, 0);
+            this.HideButton.Name = "HideButton";
+            this.HideButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.HideButton.Size = new System.Drawing.Size(61, 27);
+            this.HideButton.TabIndex = 12;
+            this.HideButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.HideButton.UseVisualStyleBackColor = false;
+            this.HideButton.Click += new System.EventHandler(this.Hide_Button_Click);
+            // 
+            // CloseButton
+            // 
+            this.CloseButton.AutoSize = true;
+            this.CloseButton.BackColor = System.Drawing.Color.Transparent;
+            this.CloseButton.BackgroundImage = global::Jet_Gears.Properties.Resources._1;
+            this.CloseButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.CloseButton.Dock = System.Windows.Forms.DockStyle.Right;
+            this.CloseButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
+            this.CloseButton.FlatAppearance.BorderSize = 0;
+            this.CloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CloseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CloseButton.ForeColor = System.Drawing.Color.White;
+            this.CloseButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.CloseButton.Location = new System.Drawing.Point(1136, 0);
+            this.CloseButton.Name = "CloseButton";
+            this.CloseButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.CloseButton.Size = new System.Drawing.Size(61, 27);
+            this.CloseButton.TabIndex = 11;
+            this.CloseButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.CloseButton.UseVisualStyleBackColor = false;
+            this.CloseButton.Click += new System.EventHandler(this.Close_Button_Click);
             // 
             // Main_Form
             // 
-            this.ClientSize = new System.Drawing.Size(1194, 671);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1194, 697);
             this.Controls.Add(this.panel5);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.HelpButton = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main_Form";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_Form_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_Form_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.Menu_Panel.ResumeLayout(false);
+            this.Menu_Panel.PerformLayout();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Button HideButton;
+
+        private System.Windows.Forms.Button CloseButton;
+
+        private System.Windows.Forms.Panel Menu_Panel;
 
         private System.Windows.Forms.Button button5;
 
@@ -390,7 +469,7 @@
 
         private System.Windows.Forms.Panel panel10;
 
-        private System.Windows.Forms.Panel panelChildForm;
+        public System.Windows.Forms.Panel panelChildForm;
 
         private System.Windows.Forms.Button Basket_Button;
         private System.Windows.Forms.Button Supply_Button;

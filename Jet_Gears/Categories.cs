@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Jet_Gears.Controls;
 using Jet_Gears.Objects;
 
 namespace Jet_Gears
@@ -12,9 +13,11 @@ namespace Jet_Gears
         
         public static Forms.Main_Form CurrentMainForm { get; set; }
         
-        public static OverviewPart Current_OverviewPart = new OverviewPart("", "", "", "", "", "","",new List<KeyValuePair<string, string>>());
+        public static OverviewPart Current_OverviewPart = new OverviewPart("", "", "", "",  "","",new List<KeyValuePair<string, string>>());
         
-        public static ArrayList BusketArray = new ArrayList();
+        
+        public static List<Shelf_Gear> BusketArray = new List<Shelf_Gear>();
+        public static List<Order> Orders = new List<Order>();
         public static List<Search_Gear> SearchGears = new List<Search_Gear>();
         public static List<Shelf_Gear> ShelfGears = new List<Shelf_Gear>();
         public static List<string> ShelvesList = new List<string>() ;

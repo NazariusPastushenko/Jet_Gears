@@ -10,8 +10,10 @@ public class Shelf_Gear
     public string price { get; set; }
     public string description { get; set; }
     public Image image { get; set; }
+    public bool Check { get; set; }
+    
 
-    public Shelf_Gear( string gearcode, string countOf, string maker, string price, string description, Image image)
+    public Shelf_Gear( string gearcode, string countOf, string maker, string price, string description, Image image,bool check)
     {
         this.gearcode = gearcode;
         count_of = countOf;
@@ -19,5 +21,6 @@ public class Shelf_Gear
         this.price = price;
         this.description = description;
         this.image = image;
+        this.Check = check;
     }
 }

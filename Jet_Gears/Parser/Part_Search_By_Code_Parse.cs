@@ -24,7 +24,7 @@ public class Part_Search_By_Code_Parse
 {
     public static OverviewPart Part_URL_Search(string url)
     {
-        OverviewPart Return_part = new OverviewPart("", "", "", "", "", "","",new List<KeyValuePair<string, string>>());
+        OverviewPart Return_part = new OverviewPart("", "", "", "", "","",new List<KeyValuePair<string, string>>());
         var web = new HtmlWeb();
         try
         {
@@ -126,7 +126,7 @@ public class Part_Search_By_Code_Parse
 
 
 
-            Return_part = new OverviewPart(Title, Description, manufacturer,article,brand_img, part_img, priceUA.ToString(), tableData);
+            Return_part = new OverviewPart(Title, Description, manufacturer,article, part_img, priceUA.ToString(), tableData);
         }
         catch (Exception e)
         {
@@ -190,7 +190,7 @@ public class Part_Search_By_Code_Parse
                 string[] split_title = title.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
                 
-                Categories.Current_OverviewPart = new OverviewPart(title,"",brand,split_title[split_title.Length-1],"",imageUrl,price + " \u20B4",tableData);
+                Categories.Current_OverviewPart = new OverviewPart(title,"",brand,split_title[split_title.Length-1],imageUrl,price,tableData);
             }
             
             

@@ -112,7 +112,7 @@ namespace Jet_Gears
             }
             card.LeftImageMouseEnter += Search_Card_LeftImageMouseEnter;
             card.LeftImageMouseLeave += Search_Card_LeftImageMouseLeave;
-            card.BusketIcon_ImageClick += Search_Card_AddToCart;
+            card.right_Bottom_Button_Click += Search_Card_AddToCart;
 
             if (link.Contains("zvuk"))
             {
@@ -142,9 +142,9 @@ namespace Jet_Gears
         {
             GearCard gearCard = sender as GearCard;
             Part_Search_By_Code_Parse.PartZvuk_URL_Search(gearCard.link);
-            Search_Part_Overview overview_form = new Search_Part_Overview();
+            Search_Part_Overview overviewForm = new Search_Part_Overview();
 
-            OpenChildFormWithAnimation(overview_form);
+            OpenChildFormWithAnimation(overviewForm);
         }
 
         private void Search_Card_LeftImageMouseEnter(object sender, EventArgs e)

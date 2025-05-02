@@ -31,6 +31,7 @@ namespace Jet_Gears
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Registration_Form));
             this.Registration_Password_Textbox = new System.Windows.Forms.TextBox();
             this.Registration_Login_Textbox = new System.Windows.Forms.TextBox();
             this.Registration_Button = new Jet_Gears.Controls.button();
@@ -64,7 +65,7 @@ namespace Jet_Gears
             // 
             // Registration_Button
             // 
-            this.Registration_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(75)))), ((int)(((byte)(114)))));
+            this.Registration_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(59)))), ((int)(((byte)(9)))));
             this.Registration_Button.BackColorAdditional = System.Drawing.Color.Gray;
             this.Registration_Button.BackColorGradientEnabled = false;
             this.Registration_Button.BackColorGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Horizontal;
@@ -184,6 +185,7 @@ namespace Jet_Gears
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Registration_Form";
             this.Text = "Registration_Form";
             this.Load += new System.EventHandler(this.Registration_Form_Load);

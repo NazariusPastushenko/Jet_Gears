@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Windows.Forms;
 using Jet_Gears.Controls;
 using Jet_Gears.DataBases;
+using System.Runtime.InteropServices;
 using Jet_Gears.Objects;
 using Newtonsoft.Json;
 
@@ -139,18 +140,6 @@ namespace Jet_Gears.Forms
             OpenChildForm(new Basket_Form());
         }
 
-
-        private void Main_Form_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Program.Ask_Closing(sender,e);
-        }
-
-        private void Main_Form_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
-        }
-
-
         private void button3_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Shelf_Form());
@@ -202,7 +191,39 @@ namespace Jet_Gears.Forms
             }
         }
 
+// У класі форми
+        [DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+        [DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HTCAPTION = 0x2;
 
-       
+        private void Menu_Panel_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(this.Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0);
+            }
+        }
+
+        private void Close_Button_Click(object sender, EventArgs e)
+        {
+            var args = new FormClosingEventArgs(CloseReason.UserClosing, false);
+            Program.Ask_Closing(this, args);
+
+            if (!args.Cancel)
+            {
+                this.Close();
+                Application.Exit();
+            }
+        }
+
+
+        private void Hide_Button_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
     }
 }

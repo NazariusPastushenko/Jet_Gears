@@ -31,6 +31,7 @@ namespace Jet_Gears
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Supply_Form));
             this.CodeTextBox = new yt_DesignUI.EgoldsGoogleTextBox();
             this.MakerTextbox = new yt_DesignUI.EgoldsGoogleTextBox();
             this.PriceTextBox = new yt_DesignUI.EgoldsGoogleTextBox();
@@ -221,6 +222,7 @@ namespace Jet_Gears
             this.Controls.Add(this.MakerTextbox);
             this.Controls.Add(this.CodeTextBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Supply_Form";
             this.Text = "Supply_Form";
             ((System.ComponentModel.ISupportInitialize)(this.AmountControl)).EndInit();

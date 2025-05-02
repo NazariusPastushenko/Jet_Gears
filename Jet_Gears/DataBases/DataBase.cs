@@ -5,7 +5,7 @@ namespace Jet_Gears.DataBases
     public class DataBase
     {
         public SqlConnection sqlConnection =
-            new SqlConnection("Server=tcp:jetsgearsserver.database.windows.net,1433;Initial Catalog=Jet_Gears_DB;Persist Security Info=False;User ID=Nazarelo;Password=Naznaz123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            new SqlConnection("Server=192.168.56.1,1433;Database=Parts;User Id=jet_User;Password=naznaz123");
 
 
         public void openConnection()

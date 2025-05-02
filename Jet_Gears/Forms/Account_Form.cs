@@ -120,4 +120,14 @@ public partial class Account_Form : Form
     db.closeConnection();
 }
 
+private void button1_Click(object sender, EventArgs e)
+{
+    Close();
+}
+
+private void button3_Click(object sender, EventArgs e)
+{
+    Close();
+    Categories.CurrentMainForm.OpenChildForm(new HistoryForm());
+}
 }

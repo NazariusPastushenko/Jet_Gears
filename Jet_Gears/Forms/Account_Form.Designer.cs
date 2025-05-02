@@ -32,6 +32,8 @@ partial class Account_Form
     private void InitializeComponent()
     {
         this.panel2 = new System.Windows.Forms.Panel();
+        this.button3 = new System.Windows.Forms.Button();
+        this.button1 = new System.Windows.Forms.Button();
         this.label1 = new System.Windows.Forms.Label();
         this.Password_TextBox = new System.Windows.Forms.TextBox();
         this.Password_label = new System.Windows.Forms.Label();
@@ -45,18 +47,49 @@ partial class Account_Form
         this.Phone_TextBox = new System.Windows.Forms.TextBox();
         this.radioButton1 = new System.Windows.Forms.RadioButton();
         this.Save_Button = new Jet_Gears.Controls.button();
+        this.button2 = new System.Windows.Forms.Button();
         this.panel2.SuspendLayout();
         this.SuspendLayout();
         // 
         // panel2
         // 
         this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(59)))), ((int)(((byte)(9)))));
+        this.panel2.Controls.Add(this.button3);
+        this.panel2.Controls.Add(this.button1);
         this.panel2.Controls.Add(this.label1);
         this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
         this.panel2.Location = new System.Drawing.Point(0, 0);
         this.panel2.Name = "panel2";
         this.panel2.Size = new System.Drawing.Size(566, 60);
         this.panel2.TabIndex = 6;
+        // 
+        // button3
+        // 
+        this.button3.BackColor = System.Drawing.Color.Transparent;
+        this.button3.BackgroundImage = global::Jet_Gears.Properties.Resources.history_icon;
+        this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+        this.button3.FlatAppearance.BorderSize = 0;
+        this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+        this.button3.Location = new System.Drawing.Point(508, 8);
+        this.button3.Name = "button3";
+        this.button3.Size = new System.Drawing.Size(45, 45);
+        this.button3.TabIndex = 20;
+        this.button3.UseVisualStyleBackColor = false;
+        this.button3.Click += new System.EventHandler(this.button3_Click);
+        // 
+        // button1
+        // 
+        this.button1.BackColor = System.Drawing.Color.Transparent;
+        this.button1.BackgroundImage = global::Jet_Gears.Properties.Resources.Arrow_Left___копія;
+        this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+        this.button1.FlatAppearance.BorderSize = 0;
+        this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+        this.button1.Location = new System.Drawing.Point(8, 8);
+        this.button1.Name = "button1";
+        this.button1.Size = new System.Drawing.Size(45, 45);
+        this.button1.TabIndex = 19;
+        this.button1.UseVisualStyleBackColor = false;
+        this.button1.Click += new System.EventHandler(this.button1_Click);
         // 
         // label1
         // 
@@ -216,12 +249,26 @@ partial class Account_Form
         this.Save_Button.UseZoomEffectOnHover = false;
         this.Save_Button.Click += new System.EventHandler(this.Save_Button_Click_1);
         // 
+        // button2
+        // 
+        this.button2.BackColor = System.Drawing.Color.Transparent;
+        this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+        this.button2.FlatAppearance.BorderSize = 0;
+        this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+        this.button2.Location = new System.Drawing.Point(-387, 39);
+        this.button2.Name = "button2";
+        this.button2.Size = new System.Drawing.Size(121, 45);
+        this.button2.TabIndex = 19;
+        this.button2.UseVisualStyleBackColor = false;
+        this.button2.Click += new System.EventHandler(this.button1_Click);
+        // 
         // Account_Form
         // 
         this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
         this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         this.BackColor = System.Drawing.Color.White;
         this.ClientSize = new System.Drawing.Size(566, 419);
+        this.Controls.Add(this.button2);
         this.Controls.Add(this.Save_Button);
         this.Controls.Add(this.radioButton1);
         this.Controls.Add(this.Phone_TextBox);
@@ -242,6 +289,11 @@ partial class Account_Form
         this.ResumeLayout(false);
         this.PerformLayout();
     }
+
+    private System.Windows.Forms.Button button2;
+    private System.Windows.Forms.Button button3;
+
+    private System.Windows.Forms.Button button1;
 
     private System.Windows.Forms.Label Password_label;
 

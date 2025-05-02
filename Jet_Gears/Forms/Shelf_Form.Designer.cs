@@ -31,6 +31,7 @@ partial class Shelf_Form
     /// </summary>
     private void InitializeComponent()
     {
+        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Shelf_Form));
         this.button1 = new Jet_Gears.Controls.button();
         this.panel1 = new System.Windows.Forms.Panel();
         this.Shelf_Panel = new System.Windows.Forms.Panel();
@@ -142,6 +143,7 @@ partial class Shelf_Form
         this.Controls.Add(this.Shelf_Panel);
         this.Controls.Add(this.panel1);
         this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+        this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
         this.Name = "Shelf_Form";
         this.Text = "Shelf_Form";
         this.panel1.ResumeLayout(false);

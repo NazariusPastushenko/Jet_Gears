@@ -13,6 +13,7 @@
         <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
         <Deterministic>true</Deterministic>
         <LangVersion>latest</LangVersion>
+        <ApplicationIcon>Icon.ico</ApplicationIcon>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
@@ -259,6 +260,18 @@
         <Compile Include="Forms\Car_Nodes_Form.Designer.cs">
           <DependentUpon>Car_Nodes_Form.cs</DependentUpon>
         </Compile>
+        <Compile Include="Forms\Edit_Gear_Form.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Forms\Edit_Gear_Form.Designer.cs">
+          <DependentUpon>Edit_Gear_Form.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Forms\HistoryForm.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Forms\HistoryForm.Designer.cs">
+          <DependentUpon>HistoryForm.cs</DependentUpon>
+        </Compile>
         <Compile Include="Forms\Loading_Form.cs">
           <SubType>Form</SubType>
         </Compile>
@@ -294,6 +307,12 @@
         </Compile>
         <Compile Include="Forms\Mark_Form.Designer.cs">
           <DependentUpon>Mark_Form.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Forms\Order_Details_Form.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Forms\Order_Details_Form.Designer.cs">
+          <DependentUpon>Order_Details_Form.cs</DependentUpon>
         </Compile>
         <Compile Include="Forms\PartsFromNode_Form.cs">
           <SubType>Form</SubType>
@@ -331,11 +350,11 @@
         <Compile Include="Forms\Shelf_Form.Designer.cs">
           <DependentUpon>Shelf_Form.cs</DependentUpon>
         </Compile>
-        <Compile Include="Forms\Shelf_Part_Overview.cs">
+        <Compile Include="Forms\Shelf_OverviewGear_Form.cs">
           <SubType>Form</SubType>
         </Compile>
-        <Compile Include="Forms\Shelf_Part_Overview.Designer.cs">
-          <DependentUpon>Shelf_Part_Overview.cs</DependentUpon>
+        <Compile Include="Forms\Shelf_OverviewGear_Form.Designer.cs">
+          <DependentUpon>Shelf_OverviewGear_Form.cs</DependentUpon>
         </Compile>
         <Compile Include="Forms\Supply_Form.cs">
           <SubType>Form</SubType>
@@ -351,11 +370,13 @@
         <Compile Include="Objects\Car_Node.cs" />
         <Compile Include="Objects\Gear.cs" />
         <Compile Include="Objects\Car_Mark.cs" />
+        <Compile Include="Objects\Orders.cs" />
         <Compile Include="Objects\OverviewPart.cs" />
         <Compile Include="Objects\Part_Nodes.cs" />
         <Compile Include="Objects\RootMaker.cs" />
         <Compile Include="Objects\Search_Gear.cs" />
         <Compile Include="Objects\Shelf_Gear.cs" />
+        <Compile Include="Objects\Shelf_OverviewPart.cs" />
         <Compile Include="Parser\InitialSeach_OnlineCarParts.cs" />
         <Compile Include="Parser\InitialSearch_AvtoZvuk.cs" />
         <Compile Include="Parser\Part_Search_By_Code_Parse.cs" />
@@ -397,6 +418,12 @@
         <EmbeddedResource Include="Forms\Car_Nodes_Form.resx">
           <DependentUpon>Car_Nodes_Form.cs</DependentUpon>
         </EmbeddedResource>
+        <EmbeddedResource Include="Forms\Edit_Gear_Form.resx">
+          <DependentUpon>Edit_Gear_Form.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Forms\HistoryForm.resx">
+          <DependentUpon>HistoryForm.cs</DependentUpon>
+        </EmbeddedResource>
         <EmbeddedResource Include="Forms\Main_Form.resx">
           <DependentUpon>Main_Form.cs</DependentUpon>
         </EmbeddedResource>
@@ -411,6 +438,9 @@
         </EmbeddedResource>
         <EmbeddedResource Include="Forms\Mark_Form.resx">
           <DependentUpon>Mark_Form.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Forms\Order_Details_Form.resx">
+          <DependentUpon>Order_Details_Form.cs</DependentUpon>
         </EmbeddedResource>
         <EmbeddedResource Include="Forms\PartsFromNode_Form.resx">
           <DependentUpon>PartsFromNode_Form.cs</DependentUpon>
@@ -430,8 +460,8 @@
         <EmbeddedResource Include="Forms\Shelf_Form.resx">
           <DependentUpon>Shelf_Form.cs</DependentUpon>
         </EmbeddedResource>
-        <EmbeddedResource Include="Forms\Shelf_Part_Overview.resx">
-          <DependentUpon>Shelf_Part_Overview.cs</DependentUpon>
+        <EmbeddedResource Include="Forms\Shelf_OverviewGear_Form.resx">
+          <DependentUpon>Shelf_OverviewGear_Form.cs</DependentUpon>
         </EmbeddedResource>
         <EmbeddedResource Include="Forms\Supply_Form.resx">
           <DependentUpon>Supply_Form.cs</DependentUpon>
@@ -445,6 +475,7 @@
             <AutoGen>True</AutoGen>
             <DependentUpon>Resources.resx</DependentUpon>
         </Compile>
+        <None Include="Icon.ico" />
         <None Include="packages.config" />
         <None Include="Properties\Settings.settings">
             <Generator>SettingsSingleFileGenerator</Generator>
@@ -460,12 +491,19 @@
         <None Include="App.config" />
     </ItemGroup>
     <ItemGroup>
+      <Content Include="Objects\Icon.ico" />
       <Content Include="Resources\Alata.ttf" />
       <Content Include="Resources\Arrow_Left.png" />
+      <Content Include="Resources\Arrow_Left___копія.png" />
       <Content Include="Resources\Backet_Button.png" />
+      <Content Include="Resources\Black_X.png" />
       <Content Include="Resources\Car_Button.png" />
+      <Content Include="Resources\Close.png" />
       <Content Include="Resources\Closed_Eye.png" />
+      <Content Include="Resources\Close_button.png" />
       <Content Include="Resources\free_user_icon_3296_thumb.png" />
+      <Content Include="Resources\Hide_Button.png" />
+      <Content Include="Resources\history_icon.png" />
       <Content Include="Resources\images.png" />
       <Content Include="Resources\images_removebg_preview.png" />
       <Content Include="Resources\Left_Arrow.png" />
@@ -475,16 +513,23 @@
       <Content Include="Resources\Mechanic.png" />
       <Content Include="Resources\Open_Eye.png" />
       <Content Include="Resources\Part_Icon.png" />
+      <Content Include="Resources\Pen_Icon.png" />
       <Content Include="Resources\Picture_Icon.png" />
       <Content Include="Resources\Right_Arrow.png" />
       <Content Include="Resources\Search_Button.png" />
       <Content Include="Resources\Send_Button.png" />
       <Content Include="Resources\Shelf_Button.png" />
       <Content Include="Resources\star.png" />
+      <Content Include="Resources\Untitled_1.png" />
       <Content Include="Resources\User_Icon.png" />
+      <Content Include="Resources\_.png" />
       <Content Include="Resources\_0a41b1c83a9f2.png" />
+      <Content Include="Resources\_1.png" />
       <Content Include="Resources\_1167055.png" />
+      <Content Include="Resources\_133.png" />
+      <Content Include="Resources\_2.png" />
       <Content Include="Resources\_2736918.png" />
+      <Content Include="Resources\_2к.png" />
       <Content Include="Resources\_3737369.png" />
       <Content Include="Resources\_3879485.png" />
       <Content Include="Resources\впавпа.png" />

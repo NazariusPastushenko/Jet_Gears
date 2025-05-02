@@ -25,12 +25,7 @@ public partial class Search_Part_Overview : Form
         InitializeComponent();
 
         Title_Label.Text =  Current_Part.Title;
-        Description_Label.Text = Current_Part.Description;
-        if (String.IsNullOrEmpty(Current_Part.Description))
-        {
-            Specs_Label.Location = Description_Label.Location;
-        }
-        Price_Label.Text += Current_Part.Price;
+        Price_Label.Text += Current_Part.Price+"\u20B4";
         Part_PictureBox.ImageLocation = Current_Part.Part_PictureURL;
         Part_PictureBox.SizeMode = PictureBoxSizeMode.Zoom;
         
@@ -64,11 +59,9 @@ public partial class Search_Part_Overview : Form
             description += $"{VARIABLE.Key}: {VARIABLE.Value}\n";
         }
         // Отримання значень з форми
-        string gear_code = Current_Part.Article;
+        string gear_code = Current_Part.Title;
         string maker = Current_Part.Manufacturer;
         string price = Current_Part.Price;
-        price = price.Remove(price.Length-1);
-        
         string token = Categories.CurrUserToken;
 
         // Запит з параметрами
@@ -109,19 +102,6 @@ public partial class Search_Part_Overview : Form
                 command.Parameters.Add("@ImageData", SqlDbType.VarBinary).Value = imageBytes; // Якщо зображення є
             }
             
-            string BrandUrl = Current_Part.Part_PictureURL; 
-            using (var webClient = new WebClient()) { 
-                imageBytes = webClient.DownloadData(BrandUrl);
-            }
-            
-            if (imageBytes == null || imageBytes.Length == 0)
-            {
-                command.Parameters.Add("@BrandImageData", SqlDbType.VarBinary).Value = DBNull.Value; // Якщо зображення немає
-            }
-            else
-            {
-                command.Parameters.Add("@BrandImageData", SqlDbType.VarBinary).Value = imageBytes; // Якщо зображення є
-            }
 
             
 

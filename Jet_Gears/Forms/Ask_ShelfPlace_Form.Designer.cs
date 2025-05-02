@@ -36,6 +36,8 @@ partial class Ask_ShelfPlace_Form
         this.button1 = new Jet_Gears.Controls.button();
         this.label2 = new System.Windows.Forms.Label();
         this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+        this.label3 = new System.Windows.Forms.Label();
+        this.textBox1 = new System.Windows.Forms.TextBox();
         ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
         this.SuspendLayout();
         // 
@@ -77,7 +79,7 @@ partial class Ask_ShelfPlace_Form
         this.button1.Dock = System.Windows.Forms.DockStyle.Bottom;
         this.button1.Font = new System.Drawing.Font("Bahnschrift SemiBold Condensed", 20F);
         this.button1.ForeColor = System.Drawing.Color.White;
-        this.button1.Location = new System.Drawing.Point(0, 313);
+        this.button1.Location = new System.Drawing.Point(0, 356);
         this.button1.Name = "button1";
         this.button1.RippleColor = System.Drawing.Color.Black;
         this.button1.RoundingEnable = false;
@@ -108,15 +110,38 @@ partial class Ask_ShelfPlace_Form
         this.numericUpDown1.Font = new System.Drawing.Font("Bahnschrift SemiBold Condensed", 17F);
         this.numericUpDown1.Location = new System.Drawing.Point(104, 277);
         this.numericUpDown1.Name = "numericUpDown1";
-        this.numericUpDown1.Size = new System.Drawing.Size(49, 35);
+        this.numericUpDown1.Size = new System.Drawing.Size(59, 35);
         this.numericUpDown1.TabIndex = 4;
+        // 
+        // label3
+        // 
+        this.label3.BackColor = System.Drawing.Color.Transparent;
+        this.label3.Font = new System.Drawing.Font("Bahnschrift SemiBold Condensed", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+        this.label3.ForeColor = System.Drawing.Color.Black;
+        this.label3.Location = new System.Drawing.Point(0, 313);
+        this.label3.Name = "label3";
+        this.label3.Size = new System.Drawing.Size(170, 33);
+        this.label3.TabIndex = 5;
+        this.label3.Text = "Ціна за одиницю:";
+        this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+        // 
+        // textBox1
+        // 
+        this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+        this.textBox1.Font = new System.Drawing.Font("Bahnschrift SemiBold SemiConden", 18F, System.Drawing.FontStyle.Bold);
+        this.textBox1.Location = new System.Drawing.Point(161, 314);
+        this.textBox1.Name = "textBox1";
+        this.textBox1.Size = new System.Drawing.Size(105, 36);
+        this.textBox1.TabIndex = 7;
         // 
         // Ask_ShelfPlace_Form
         // 
         this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
         this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         this.BackColor = System.Drawing.Color.White;
-        this.ClientSize = new System.Drawing.Size(266, 357);
+        this.ClientSize = new System.Drawing.Size(266, 400);
+        this.Controls.Add(this.textBox1);
+        this.Controls.Add(this.label3);
         this.Controls.Add(this.numericUpDown1);
         this.Controls.Add(this.label2);
         this.Controls.Add(this.button1);
@@ -127,7 +152,12 @@ partial class Ask_ShelfPlace_Form
         this.Text = "Ask_ShelfPlace_Form";
         ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
         this.ResumeLayout(false);
+        this.PerformLayout();
     }
+
+    private System.Windows.Forms.TextBox textBox1;
+
+    private System.Windows.Forms.Label label3;
 
     private System.Windows.Forms.NumericUpDown numericUpDown1;
 

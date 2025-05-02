@@ -62,9 +62,12 @@ C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Forms.Mar
 C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Forms.Car_Form.resources
 C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Forms.PartsFromNode_Form.resources
 C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.csproj.CopyComplete
-C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Forms.Shelf_Part_Overview.resources
 C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Forms.AI_Assistant_Chat.resources
 C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Controls.ChatMessageControl.resources
 C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Forms.Search_ByCar_AutoZvuk.resources
 C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Forms.Account_Form.resources
 C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Forms.Ask_Amount_ToCart.resources
+C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Forms.Shelf_OverviewGear_Form.resources
+C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Forms.Edit_Gear_Form.resources
+C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Forms.HistoryForm.resources
+C:\Users\nazar\RiderProjects\Jet_Gears\Jet_Gears\obj\Release\Jet_Gears.Forms.Order_Details_Form.resources

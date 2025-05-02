@@ -38,14 +38,15 @@ public partial class PartsFromNode_Form : Form
             b.BackColor = Color.FromArgb(0, 36, 0);
             b.ForeColor = Color.Azure;
             b.Font = new Font("Bahnschrift SemiBold SemiConden", 15, FontStyle.Bold);
-            b.Size = new Size(490, 80);
+            b.Size = new Size(panel1.Width-30, 80);
+            b.TextAlign = ContentAlignment.MiddleLeft;
             b.Click += Find_Parts_By_Node;
-            Controls.Add(b);
+            panel1.Controls.Add(b);
             b.Show();
             b.BringToFront();
             Current_Location.Y += 80 + 5;
-            }
         }
+    }
 
     private void Find_Parts_By_Node(object sender, EventArgs e)
     {
@@ -57,6 +58,11 @@ public partial class PartsFromNode_Form : Form
 
     private void Clean_Buttons()
     {
-        Controls.Clear();
+        panel1.Controls.Clear();
+    }
+
+    private void button1_Click(object sender, EventArgs e)
+    {
+        Close();
     }
 }

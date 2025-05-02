@@ -31,6 +31,7 @@ partial class Search_ByCar_AutoZvuk
     /// </summary>
     private void InitializeComponent()
     {
+        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Search_ByCar_AutoZvuk));
         this.panel2 = new System.Windows.Forms.Panel();
         this.label1 = new System.Windows.Forms.Label();
         this.Buttons_Panel = new System.Windows.Forms.Panel();
@@ -67,7 +68,7 @@ partial class Search_ByCar_AutoZvuk
         this.Buttons_Panel.Controls.Add(this.label2);
         this.Buttons_Panel.Location = new System.Drawing.Point(0, 66);
         this.Buttons_Panel.Name = "Buttons_Panel";
-        this.Buttons_Panel.Size = new System.Drawing.Size(1188, 534);
+        this.Buttons_Panel.Size = new System.Drawing.Size(1200, 534);
         this.Buttons_Panel.TabIndex = 7;
         // 
         // label2
@@ -89,6 +90,7 @@ partial class Search_ByCar_AutoZvuk
         this.Controls.Add(this.Buttons_Panel);
         this.Controls.Add(this.panel2);
         this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+        this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
         this.Name = "Search_ByCar_AutoZvuk";
         this.Text = "Search_ByCar_AutoZvuk";
         this.panel2.ResumeLayout(false);

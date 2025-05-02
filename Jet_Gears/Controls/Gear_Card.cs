@@ -11,7 +11,9 @@ namespace Jet_Gears.Controls
     public class GearCard : Control
     {
         public string link { get; set; }
-        public Gear Card_object { get; set; }
+        public Shelf_Gear Card_object { get; set; }
+        
+        public Order Order_object { get; set; }
 
         [Category("Images")]
         [Description("Image displayed on the left side.")]
@@ -23,6 +25,12 @@ namespace Jet_Gears.Controls
         {
             get => rightBottomButton.BackgroundImage;
             set => rightBottomButton.BackgroundImage = value;
+        }
+        
+        public Image RightTopButtonImage
+        {
+            get => rightTopButton.BackgroundImage;
+            set => rightTopButton.BackgroundImage = value;
         }
 
         [Category("Images")]
@@ -75,10 +83,12 @@ namespace Jet_Gears.Controls
 
         public event EventHandler LeftImageMouseEnter;
         public event EventHandler LeftImageMouseLeave;
-        public event EventHandler BusketIcon_ImageClick;
+        public event EventHandler right_Bottom_Button_Click;
+        public event EventHandler right_Top_Button_Click;
 
         private bool isMouseOverLeftImage = false;
         private readonly Button rightBottomButton;
+        private readonly Button rightTopButton;
 
         public GearCard()
         {
@@ -89,14 +99,27 @@ namespace Jet_Gears.Controls
 
             rightBottomButton = new Button
             {
-                Size = new Size(20, 20),
+                Size = new Size(25, 25),
                 FlatStyle = FlatStyle.Flat,
                 BackgroundImageLayout = ImageLayout.Stretch,
                 TabStop = false
             };
             rightBottomButton.FlatAppearance.BorderSize = 0;
-            rightBottomButton.Click += (s, e) => BusketIcon_ImageClick?.Invoke(this, EventArgs.Empty);
+            rightBottomButton.Click += (s, e) => right_Bottom_Button_Click?.Invoke(this, EventArgs.Empty);
             Controls.Add(rightBottomButton);
+            
+            rightTopButton = new Button
+            {
+                Size = new Size(25, 25),
+                FlatStyle = FlatStyle.Flat,
+                BackgroundImageLayout = ImageLayout.Stretch,
+                TabStop = false
+            };
+            rightTopButton.FlatAppearance.BorderSize = 0;
+            rightTopButton.Click += (s, e) => right_Top_Button_Click?.Invoke(this, EventArgs.Empty);
+            Controls.Add(rightTopButton);
+
+            
 
             MouseMove += GearCard_MouseMove;
             MouseLeave += GearCard_MouseLeave;
@@ -112,7 +135,10 @@ namespace Jet_Gears.Controls
         {
                 if (rightBottomButton == null)
                     return;
-                rightBottomButton.Location = new Point(this.Width - rightBottomButton.Width - 10, this.Height - rightBottomButton.Height - 10);
+                rightBottomButton.Location = new Point(this.Width - rightBottomButton.Width - 5, this.Height - rightBottomButton.Height - 5);
+                if (rightTopButton == null)
+                    return;
+                rightTopButton.Location = new Point(this.Width - rightTopButton.Width - 5, 5);
         }
 
         protected override void OnPaint(PaintEventArgs e)

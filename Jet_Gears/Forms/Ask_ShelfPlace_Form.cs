@@ -15,6 +15,7 @@ public partial class Ask_ShelfPlace_Form : Form
         InitializeComponent();
         _parent = parent;
         StartPosition = FormStartPosition.CenterScreen;
+        textBox1.Text = Categories.Current_OverviewPart.Price;
         foreach (var Shelf in Categories.ShelvesList)
         {
             SplitString(Shelf);
@@ -48,6 +49,7 @@ public partial class Ask_ShelfPlace_Form : Form
             MessageBox.Show("Виберіть полицю а не стелаж!.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
+        Categories.Current_OverviewPart.Price = textBox1.Text;
         _parent.Add_Part_to_DataBase(treeView1.SelectedNode.Text,(int)numericUpDown1.Value);
         Close();
     }
